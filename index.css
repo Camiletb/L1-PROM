@@ -1,8 +1,8 @@
-* {
+/* * {
     /* Sobreescribe el box-sizing de Bootstrap por defecto: border-box */
     /* box-sizing: content-box; //Úsala si no usas bootstrap*/
     /* box-sizing: border-box; /* Por defecto en Bootstrap */
-}
+/*} */
 
 body {
     margin: 0; /* Para quitar el por defecto */
