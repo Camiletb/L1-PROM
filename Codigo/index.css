@@ -1,8 +1,7 @@
-/* * {
-    /* Sobreescribe el box-sizing de Bootstrap por defecto: border-box */
-    /* box-sizing: content-box; //Úsala si no usas bootstrap*/
-    /* box-sizing: border-box; /* Por defecto en Bootstrap */
-/*} */
+@font-face {
+    font-family: "Bebas-Neue";
+    src: url(/Fuentes/BebasNeue-Regular.ttf);
+}
 
 body {
     margin: 0; /* Para quitar el por defecto */
@@ -14,4 +13,17 @@ div { /* Por especificidad, se recomienda trabajar con clases si es posible */
     margin-right: auto;
     /* Para gestionar los contenidos mayores a sus contenedores, a priori usamos: */
     overflow: auto;
+}
+
+.jumbotron {
+    background-color: #ECECEC;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.jumbotron h1 {
+    color: #535D6C;
+    font-family: "Bebas-Neue";
+    font-size: 5em;
+    letter-spacing: 0.25em;
 }
