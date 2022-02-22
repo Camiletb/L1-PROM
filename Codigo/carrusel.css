@@ -1,13 +1,16 @@
-body{
+body {
     margin: 0;
 }
-.jumbotron{
+
+.jumbotron {
     margin: 0;
 }
-body{
+
+body {
     margin: 0; /* Para quitar el por defecto */
 }
-footer{
+
+footer {
     position: relative;
     /* width: 100%; */
     /* display: block; */
@@ -16,31 +19,33 @@ footer{
     margin-right: auto; */
 }
 
-.carousel{
+.carousel {
   margin-bottom: 25px;
 }
-.sangrias{
+.sangrias {
   margin-left: 60px;
   margin-right: 60px;
 }
 
-.carousel-inner{
+.carousel-inner {
   height: 50vh;
   max-height: 50vh;
 }
 
 .carousel-control-prev,
 .carousel-indicators,
- .carousel-control-next{
+ .carousel-control-next {
   /* position: relative; */
   /* height: 30vh; */
   max-height: 50vh;
 }
-.carousel-example-indicators{
+
+.carousel-example-indicators {
   position: absolute;
   height: 0px;
 
 }
+
 /* .div_bueno{ /* Por especificidad, se recomienda trabajar con clases si es posible */
     /* Para centrar un elemento */
     /*margin-left: auto;
