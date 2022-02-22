@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+}
+.jumbotron{
+    margin: 0;
+}
+body{
+    margin: 0; /* Para quitar el por defecto */
+}
+footer{
+    position: relative;
+    /* width: 100%; */
+    /* display: block; */
+    bottom: 0;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.carousel{
+  margin-bottom: 25px;
+}
+.sangrias{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.carousel-inner{
+  height: 50vh;
+  max-height: 50vh;
+}
+
+.carousel-control-prev,
+.carousel-indicators,
+ .carousel-control-next{
+  /* position: relative; */
+  /* height: 30vh; */
+  max-height: 50vh;
+}
+.carousel-example-indicators{
+  position: absolute;
+  height: 0px;
+
+}
+/* .div_bueno{ /* Por especificidad, se recomienda trabajar con clases si es posible */
+    /* Para centrar un elemento */
+    /*margin-left: auto;
+    margin-right: auto;
+    /* Para gestionar los contenidos mayores a sus contenedores, a priori usamos: */
+    /*overflow: auto;
+} */
+/* Modo noche*/
+/* [data-theme="dark"] {
+    background-color: #111 !important;
+    color: #eee;
+  }
+  
+  [data-theme="dark"] .bg-black {
+    background-color: #fff !important;
+  }
+  
+  [data-theme="dark"] .bg-dark {
+    background-color: #eee !important;
+  }
+  
+  [data-theme="dark"] .bg-light {
+    background-color: #222 !important;
+  }
+  
+  [data-theme="dark"] .bg-white {
+    background-color: #000 !important;
+  } */
