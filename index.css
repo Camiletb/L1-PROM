@@ -39,6 +39,18 @@ footer {
 #search {
     margin-right: 10px;
 }
+#row {
+    height: 80vh;
+}
+
 #QR {
-    margin: 0;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    margin: auto;
+    position: absolute;
+    top: 50%;
+}
+
+#icono_Navbar {
+    margin-left: 5px;
 }
