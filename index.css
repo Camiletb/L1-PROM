@@ -33,3 +33,9 @@ footer {
     font-size: 5em;
     letter-spacing: 0.25em;
 }
+#landing_page {
+    height:80vh;
+}
+#search {
+    margin-right: 10px;
+}
