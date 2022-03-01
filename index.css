@@ -36,16 +36,17 @@ footer {
 
 .navbar-brand {
     margin-left: 7px;
+    margin-right: 0;
 }
 
 #landing_page {
     height:80vh;
 }
 #search {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 #row {
-    height: 80vh;navbar-brand
+    height: 80vh;
 }
 #QR {
     /*margin-left: auto;
@@ -53,4 +54,7 @@ footer {
     margin: auto;
     position: absolute;
     top: 50%;
+}
+#logo {
+    margin-right: 10px;
 }
