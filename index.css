@@ -58,3 +58,7 @@ footer {
 #logo {
     margin-right: 10px;
 }
+#contact{
+    border: 1px solid #ECECEC;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+}
