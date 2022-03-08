@@ -48,7 +48,7 @@ footer {
 #row {
     height: 80vh;
 }
-#QR, #contact {
+#QR{
     /*margin-left: auto;
     margin-right: auto;*/
     margin: auto;
@@ -61,4 +61,11 @@ footer {
 #contact{
     border: 1px solid #ECECEC;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    margin: auto;
+    position: absolute;
+    top: 35%;
+}
+#carruselContacto {
+    height: 50vh;
+    width: 60vw;
 }
