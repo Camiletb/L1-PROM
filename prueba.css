@@ -7,13 +7,14 @@ body {
     margin: 0; /* Para quitar el por defecto */
 }
 
-/*div { /* Por especificidad, se recomienda trabajar con clases si es posible */
+
+div { /* Por especificidad, se recomienda trabajar con clases si es posible */
     /* Para centrar un elemento */
-/*    margin-left: auto;
-/*    margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     /* Para gestionar los contenidos mayores a sus contenedores, a priori usamos: */
-/*    overflow: auto;
-/*}*/
+    overflow: auto;
+}
 
 footer {
     position: relative;
@@ -40,7 +41,7 @@ footer {
 }
 
 #landing_page {
-    height:80vh;
+    height: 80vh;
 }
 #search {
     margin-right: 5px;
