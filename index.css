@@ -7,7 +7,6 @@ body {
     margin: 0; /* Para quitar el por defecto */
 }
 
-
 div { /* Por especificidad, se recomienda trabajar con clases si es posible */
     /* Para centrar un elemento */
     margin-left: auto;
