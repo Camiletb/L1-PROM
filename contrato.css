@@ -1,0 +1,52 @@
+.contrato {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    width: 40em;
+    border: 1px solid #ECECEC;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    text-align: center;
+    border-radius: 0.3em;
+}
+
+.contrato > * {
+    display: block;
+    border-radius: 0.3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+    text-indent: 0.5em;
+}
+
+.contrato > label {
+    margin-bottom: 0.5em;
+}
+
+.contrato > input {
+    height: 2.5em;
+    transition: ease-in-out 0.1s;
+    box-shadow: none;
+    border: 1px solid #B7BEC8;
+    background-color: #ECECEC;
+    color: #ECECEC; /* ! No funciona */
+}
+
+.contrato > input:focus, .contrato > textarea:focus {
+    transition: ease-in-out 0.1s;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.4);
+    outline: none;
+    background-color: white;
+}
+
+.contrato > textarea {
+    height: 10em;
+    transition: ease-in-out 0.1s;
+    box-shadow: none;
+    border: 1px solid #B7BEC8;
+    background-color: #ECECEC;
+}
+
+br {
+    margin-top: 6em;
+}
