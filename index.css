@@ -73,7 +73,6 @@ footer {
 }
 #right {
     /* border-left: 1px solid gainsboro; */
-
 }
 
 #logo {
@@ -104,4 +103,31 @@ footer {
     /* margin-top: -120px;
     margin-bottom: 0;
     margin-left: 400px; */
+}
+
+/* Para el divisor vertical */
+/* @import "compass/css3"; */
+
+.or-spacer-vertical {
+  display:inline-block;
+  margin-top:100px; margin-left:100px; width:100px; 
+  position:relative; 
+}
+.mask { 
+  overflow:hidden; width:20px; height:200px;
+}
+.lefts .mask:after { 
+  content:''; 
+  display:block; margin-left:-20px;
+  width:20px; height:100%;  
+  border-radius:12px / 125px;  
+  box-shadow:0 0 8px #535D6C;
+  border: #535D6C;
+}
+.rights .mask:before { 
+  content:''; 
+  display:block; margin-left:20px;
+  width:20px; height:100%; 
+  border-radius:12px / 125px; 
+  box-shadow:0 0 8px #535D6C;
 }
