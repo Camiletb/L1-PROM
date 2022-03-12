@@ -24,6 +24,7 @@
             <h1>GOOD SOUP</h1>
         </div>
         <!--Territorio reservado para la rama de la landing page-->
+        <!--Segunda prueba-->
         <nav id="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark"> <!-- TODO: Navbar -->
             <a id="icono_NavBar" class="navbar-brand" href="/index.html"><img id="logo" src="/Imagenes/logo_BN.png" alt="logo" width="32" height="32"></img> GOOD SOUP</a>
 
@@ -39,83 +40,127 @@
                     <li class="nav-item"><a class="nav-link" href="#">Software</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Hardware</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Galería</a></li>
-                    <!-- TODO: Dropdown -->
                     <li class="nav-item dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" 
-                        type="button" id="dropdownMenuButton1" 
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                            Contacto
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">Contacto</a>
+                        <ul id="dropdown-menu-navbar" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown1">
+                            <h6 class="dropdown-header">Formularios de contacto</h6>
                             <li><a class="dropdown-item" href="contrato.html">Contratación</a></li>
                             <li><a class="dropdown-item" href="#">Oferta de empleo</a></li>
                             <li><div class="dropdown-divider"></div></li>
+                            <h6 class="dropdown-header">Más información</h6>
                             <li><a class="dropdown-item" href="#">Sobre nosotros</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
-            <div id="searchbar">
+            <div id="searchbar" class="">
                 <form id="search">  <!-- TODO: Búsqueda funcional -->
                     <input type="text" placeholder="Buscar">
-                    <input type="submit" value="Icono">
+                    <input type="submit" value="Buscar" class="btn btn-primary"><i class="fa fa-car"></i>
                 </form>
             </div>
         </nav>
 
         <div id="landing_page" class="container">
-            <div id="row" class="row">
-                <div id="left" class="col-sm-3">
-                    <!-- TODO: Crear QR-->
-                    <img id="QR" src="/Imagenes/QR_falso.png" alt="QR"></img>
+            <div class="row capas">
+                
+                <div id="left" class="col-sm-3 d-flex justify-content-center align-items-center">
+                  <!-- TODO: Crear QR-->
+                  <img id="QR" src="/Imagenes/QR-GoodSoup2.png" alt="QR" width="200" height="200"></img>
                 </div>
                 
-                <div id="right" class="col-sm-9">
+                <div id="right text-center" class="col-sm-9 d-flex justify-content-center align-items-center" style="background-color:aqua;">
                     <div id="contact" class="row">
-                        <div id="carruselContacto" class="carousel slide" data-bs-ride="carousel">
+                        <!-- <div id="card" class="card text-center">
+                            <div class="card-header">
+                              <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                  <a class="nav-link active" aria-current="true" href="#">Mapa</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Link</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">València campus</h5> -->
+                                <!-- <div class="card-body"> -->
+
+                                    <!-- <iframe id="contenedor_mapa" width="500" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
+                                    <br/>
+                                    <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a> -->
+                                    <!-- <button type="submit" class="btn btn-default btn-block" >Search</button> -->
+                                  <!-- <p class="card-text">De lunes a viernes, de 09:00 a 14:00</p> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+                            
+                          </div>
+                        <!-- <div id="carruselContacto" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                               <button type="button" data-bs-target="#carruselContacto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                               <button type="button" data-bs-target="#carruselContacto" data-bs-slide-to="1" aria-label="Slide 2"></button>
                               <button type="button" data-bs-target="#carruselContacto" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 1px solid black"></iframe>
+                            <div class="carousel-inner"> -->
+                              <!-- <div id="contenedor_mapa" class="carousel-item active">
+                                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid white"></iframe>
                                 <br/>
-                                <small>
-                                    <a href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ver mapa más grande</a>
-                                </small>
+                                <button id="ampliar_mapa" class="btn btn-dark" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ampliar
+                                    <a href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ver mapa más grande</a> -->
+                                <!--</button>
                                 <div class="carousel-caption d-none d-md-block">
                                   <h5>Aquí estamos</h5>
                                   <p>Some representative placeholder content for the first slide.</p>
                                 </div>
-                              </div>
-                              <div class="carousel-item">
+                              </div> -->
+                             <!-- Mapa -->
+                            <!-- <div class="carousel-item active">
                                 <div class="row">
-
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="Imagenes/perfil1.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        
-                                            </div>
-        
-                                        </div>
+                                    <div class="card text-center">
+                                        
+                                        <div class="card-body">
+                                          <h5 class="card-title">Donde encontrarnos</h5>
+                                          <div id="contenedor_mapa" class="carousel-item active">
+                                            <iframe width="550" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid white"></iframe>
+                                            <br/> -->
+                                            <!-- <small id="ampliar_mapa" class="btn btn-dark" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ampliar
+                                                <a href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ver mapa más grande</a>
+                                            </small> -->
+                                        <!-- </div>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="Imagenes/perfil2.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        
-                                            </div>
-                                        </div>
+                                    <div class="card-footer text-muted">
+                                        2 days ago
                                     </div>
-        
+                                </div> -->
+                                <!-- <div class="carousel-caption d-none d-md-block">
+                                  <h5>Aquí estamos</h5>
+                                  <p>Some representative placeholder content for the first slide.</p>
+                                </div> -->
                                 </div>
+                                <!-- Contacto -->
+                                <!-- <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="Camilo Enguix Nadal" src="Imagenes/perfil1.jpg">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Camilo Enguix Nadal</h4>
+                                                    <p class="card-text">CEO de Good Soup</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="Cristal Campos Abad" src="Imagenes/perfil2.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Cristal Campos Abad</h4>
+                                                <p class="card-text">CEO de Good Soup</p>
+                                            </div>
+                                        </div>
+                                    </div> -->
+        
+                                <!-- </div> -->
                                 <!-- Por si queremos añadir más info al carrusel, como las empresas colaboradoras
                                     <img src="..." class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
@@ -123,9 +168,9 @@
                                         <p>Some representative placeholder content for the second slide.</p>
                                     </div>
                                 -->
-                              </div>
+                              <!-- </div> -->
                               
-                            </div>
+                            <!-- </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carruselContacto" data-bs-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Previous</span>
@@ -134,7 +179,7 @@
                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
                               <span class="visually-hidden">Next</span>
                             </button>
-                          </div>
+                          </div> -->
                         <!--<div class="card" style="width:400px">
                             <img class="card-img-top" src="Imagenes/perfil1.jpg" alt="Card image">
                             <div class="card-body">

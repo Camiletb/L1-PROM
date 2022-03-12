@@ -39,33 +39,69 @@ footer {
     margin-right: 0;
 }
 
-#landing_page {
-    height:80vh;
+.card-title{
+    /* padding: 10px; */
+    /* border-bottom: 1px solid gainsboro; */
+    margin-bottom: 20px;
 }
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 #search {
     margin-right: 5px;
 }
-#row {
-    height: 80vh;
+.capas {
+    height: 75vh;
+}
+#landing_page {
+    height:75vh;
+}
+#left{
+    /* text-align: center; */
+    height: 230px;
+    margin: auto 0px;
+    /* offset: 4px solid black; */
+    /* padding-left: -100px; */
 }
 #QR{
-    /*margin-left: auto;
-    margin-right: auto;*/
-    margin: auto;
-    position: absolute;
-    top: 50%;
+    /* background-color: lightcoral; */
+    margin: 10px auto;
+    border-radius: 2px;
+    border: 1px solid #ECECEC;
+    /* offset:1px solid#535D6C; */
 }
+#right {
+    /* border-left: 1px solid gainsboro; */
+
+}
+
 #logo {
     margin-right: 10px;
 }
 #contact{
-    border: 1px solid #ECECEC;
+    border-left: 5px solid #ECECEC;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
     margin: auto;
-    position: absolute;
-    top: 35%;
+    /* position: absolute; */
+    /* top: 35%; */
+    width: 80vw;
+}
+#card {
+    /* width: 50vw; */
 }
 #carruselContacto {
     height: 50vh;
     width: 60vw;
+}
+#contenedor_mapa {
+    text-align: center;
+}
+/*#dropdown-menu-navbar{
+    /*margin-top: 25px;*/
+#ampliar{
+    width: fit-content;
+    /* margin-top: -120px;
+    margin-bottom: 0;
+    margin-left: 400px; */
 }
