@@ -5,33 +5,39 @@
 
 body {
     margin: 0; /* Para quitar el por defecto */
+    /* background-color:#b7bec8; */
+    background-color: #b7bec8;
 }
 
-/*div { /* Por especificidad, se recomienda trabajar con clases si es posible */
-    /* Para centrar un elemento */
-/*    margin-left: auto;
-/*    margin-right: auto;
-    /* Para gestionar los contenidos mayores a sus contenedores, a priori usamos: */
-/*    overflow: auto;
-/*}*/
-
 footer {
+    background-color: #373E48;
+    color: #ECECEC;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0;
     position: relative;
     bottom: 0;
 }
 
-.jumbotron {
-    background-color: #ECECEC;
+#marca {
     padding-top: 40px;
     padding-bottom: 40px;
     margin: 0;
+    background-color: white;
+    background-color: #ECECEC;
+}
+.corpocolor{
+    color:#d12642;
 }
 
 .jumbotron h1 {
-    color: #535D6C;
+    color:#373E48;
+    /* color:#d12642; */
     font-family: "Bebas-Neue";
     font-size: 5em;
-    letter-spacing: 0.25em;
+    /* font-weight: bold; */
+    letter-spacing: 0.2em;
+    /* background-color: white; */
 }
 
 .navbar-brand {
@@ -58,11 +64,7 @@ footer {
     height:75vh;
 }
 #left{
-    /* text-align: center; */
-    height: 230px;
-    margin: auto 0px;
-    /* offset: 4px solid black; */
-    /* padding-left: -100px; */
+    background-color: white;
 }
 #QR{
     /* background-color: lightcoral; */
@@ -86,48 +88,11 @@ footer {
     /* top: 35%; */
     width: 80vw;
 }
-#card {
-    /* width: 50vw; */
+#presentacion{
+    background-color: white;
+    height: 20vh;
+    border-radius: 4px;
 }
-#carruselContacto {
-    height: 50vh;
-    width: 60vw;
-}
-#contenedor_mapa {
-    text-align: center;
-}
-/*#dropdown-menu-navbar{
-    /*margin-top: 25px;*/
 #ampliar{
-    width: fit-content;
-    /* margin-top: -120px;
-    margin-bottom: 0;
-    margin-left: 400px; */
-}
-
-/* Para el divisor vertical */
-/* @import "compass/css3"; */
-
-.or-spacer-vertical {
-  display:inline-block;
-  margin-top:100px; margin-left:100px; width:100px; 
-  position:relative; 
-}
-.mask { 
-  overflow:hidden; width:20px; height:200px;
-}
-.lefts .mask:after { 
-  content:''; 
-  display:block; margin-left:-20px;
-  width:20px; height:100%;  
-  border-radius:12px / 125px;  
-  box-shadow:0 0 8px #535D6C;
-  border: #535D6C;
-}
-.rights .mask:before { 
-  content:''; 
-  display:block; margin-left:20px;
-  width:20px; height:100%; 
-  border-radius:12px / 125px; 
-  box-shadow:0 0 8px #535D6C;
+    transform: translate(15px, -55px);
 }
