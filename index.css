@@ -70,6 +70,9 @@ footer {
     width: 60vw;
 }
 
-#dropdown-menu-navbar{
+/*#dropdown-menu-navbar{
     /*margin-top: 25px;*/
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
