@@ -5,33 +5,39 @@
 
 body {
     margin: 0; /* Para quitar el por defecto */
+    /* background-color:#b7bec8; */
+    background-color: #b7bec8;
 }
 
-/*div { /* Por especificidad, se recomienda trabajar con clases si es posible */
-    /* Para centrar un elemento */
-/*    margin-left: auto;
-/*    margin-right: auto;
-    /* Para gestionar los contenidos mayores a sus contenedores, a priori usamos: */
-/*    overflow: auto;
-/*}*/
-
 footer {
+    background-color: #373E48;
+    color: #ECECEC;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0;
     position: relative;
     bottom: 0;
 }
 
-.jumbotron {
-    background-color: #ECECEC;
+#marca {
     padding-top: 40px;
     padding-bottom: 40px;
     margin: 0;
+    background-color: white;
+    background-color: #ECECEC;
+}
+.corpocolor{
+    color:#d12642;
 }
 
 .jumbotron h1 {
-    color: #535D6C;
+    color:#373E48;
+    /* color:#d12642; */
     font-family: "Bebas-Neue";
     font-size: 5em;
-    letter-spacing: 0.25em;
+    /* font-weight: bold; */
+    letter-spacing: 0.2em;
+    /* background-color: white; */
 }
 
 .navbar-brand {
@@ -58,11 +64,7 @@ footer {
     height:75vh;
 }
 #left{
-    /* text-align: center; */
-    height: 230px;
-    margin: auto 0px;
-    /* offset: 4px solid black; */
-    /* padding-left: -100px; */
+    background-color: white;
 }
 #QR{
     /* background-color: lightcoral; */
@@ -73,7 +75,6 @@ footer {
 }
 #right {
     /* border-left: 1px solid gainsboro; */
-
 }
 
 #logo {
@@ -81,27 +82,42 @@ footer {
 }
 #contact{
     border-left: 5px solid #ECECEC;
-    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
-    margin: auto;
     /* position: absolute; */
     /* top: 35%; */
-    width: 80vw;
 }
-#card {
-    /* width: 50vw; */
+#presentacion{
+    background-color: white;
+    border-radius: 4px;
+    height: 40vh;
+    width: 55vw;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    margin: auto;
 }
-#carruselContacto {
-    height: 50vh;
-    width: 60vw;
-}
-#contenedor_mapa {
-    text-align: center;
-}
-/*#dropdown-menu-navbar{
-    /*margin-top: 25px;*/
 #ampliar{
-    width: fit-content;
-    /* margin-top: -120px;
-    margin-bottom: 0;
-    margin-left: 400px; */
+    transform: translate(15px, -55px);
+}
+#cardstaff{
+    /* border: 1px solid #b7bec8; */
+    border-radius: 5px;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    margin: 20px;
+    height: 100%;
+}
+.nombrestaff{
+    display: inline;
+    padding-bottom: 0;
+}
+#bio {
+    font-size: 13px;
+}
+#posicion{
+    display: inline;
+    margin-left: 15px;
+    padding: 2px 5px 2px 5px;
+    outline: 1px solid #b7bec8;
+    font-size: 13px;
+}
+.ceo{
+    color:steelblue;
+
 }
