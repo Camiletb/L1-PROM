@@ -87,26 +87,83 @@
                             </li>
                           </ul>
                           <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
+                            <div class="tab-pane fade show active justify-content-center" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
                                 <iframe id="contenedor_mapa" width="500" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
                                 <br/>
                                 <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
                             </div>
-                            <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
-                                <div class="card mb-3" style="max-width: 540px;">
+
+                            <!-- Tab -->
+                            <div class="tab-pane fade justify-content-center" id="staff" role="tabpanel" aria-labelledby="staff-tab">
+                                <!-- Cards -->
+                                <!-- Perfil 1 -->
+                                <div id="cardstaff" class="card mb-3" style="max-width: 540px;">
                                     <div class="row g-0">
-                                      <div class="col-md-4">
-                                        <img src="Imagenes/perfil1.jpg" class="img-fluid rounded-start" alt="...">
-                                      </div>
-                                      <div class="col-md-8">
-                                        <div class="card-body">
-                                          <h5 class="card-title">Card title</h5>
-                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <div class="col-md-4">
+                                            <img src="Imagenes/perfil1.jpg" class="img-fluid rounded-start" alt="...">
                                         </div>
-                                      </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title nombrestaff">Camiletb</h5>
+                                                <p id="posicion" class="card-text badge rounded-pill bg-light ceo"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> CEO</small></p>
+                                                <p id="bio"class="card-text">De profesión curioso, lo demás son hobbies.<br/>
+                                                ¿Qué hago? Pues desde mochilas hasta software. Soy socorrista, músico, diseñador gráfico, maker y eterno estudiante, y mañana algo más, pero no mejor.
+                                                </p>
+                                                <!-- Split dropup button -->
+                                                <div id="btnperfil" class="btn-group dropup">
+                                                    <button type="button" class="btn btn-light text-dark">
+                                                    Perfil
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="contrato.html">Github</a></li>
+                                                        <li><a class="dropdown-item" href="#">Portfolio</a></li>
+                                                        <li><div class="dropdown-divider"></div></li>
+                                                        <li><a class="dropdown-item" href="#">Enviar email</a></li>
+                                                        <li><a class="dropdown-item" href="#">Contactar por telegram</a></li>
+                                                    <!-- Dropdown menu links -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
+                                </div>
+                                <!-- Perfil 2 -->
+                                <div id="cardstaff" class="card mb-3" style="max-width: 540px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="Imagenes/perfil2.jpg" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title nombrestaff">Camiletb</h5>
+                                                <p id="posicion" class="card-text badge rounded-pill bg-light ceo"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> CEO</small></p>
+                                                <p id="bio"class="card-text">De profesión curioso, lo demás son hobbies.<br/>
+                                                ¿Qué hago? Pues desde mochilas hasta software. Soy socorrista, músico, diseñador gráfico, maker y eterno estudiante, y mañana algo más, pero no mejor.
+                                                </p>
+                                                <!-- Split dropup button -->
+                                                <div id="btnperfil" class="btn-group dropup">
+                                                    <button type="button" class="btn btn-light text-dark">
+                                                    Perfil
+                                                    </button>
+                                                    <button type="button" class="btn btn-light text-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="visually-hidden"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="contrato.html">Github</a></li>
+                                                        <li><a class="dropdown-item" href="#">Portfolio</a></li>
+                                                        <li><div class="dropdown-divider"></div></li>
+                                                        <li><a class="dropdown-item" href="#">Enviar email</a></li>
+                                                        <li><a class="dropdown-item" href="#">Contactar por telegram</a></li>
+                                                    <!-- Dropdown menu links -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">...</div>
                           </div>

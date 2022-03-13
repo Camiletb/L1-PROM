@@ -82,17 +82,42 @@ footer {
 }
 #contact{
     border-left: 5px solid #ECECEC;
-    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
-    margin: auto;
     /* position: absolute; */
     /* top: 35%; */
-    width: 80vw;
 }
 #presentacion{
     background-color: white;
-    height: 20vh;
     border-radius: 4px;
+    height: 40vh;
+    width: 55vw;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    margin: auto;
 }
 #ampliar{
     transform: translate(15px, -55px);
+}
+#cardstaff{
+    /* border: 1px solid #b7bec8; */
+    border-radius: 5px;
+    box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
+    margin: 20px;
+    height: 100%;
+}
+.nombrestaff{
+    display: inline;
+    padding-bottom: 0;
+}
+#bio {
+    font-size: 13px;
+}
+#posicion{
+    display: inline;
+    margin-left: 15px;
+    padding: 2px 5px 2px 5px;
+    outline: 1px solid #b7bec8;
+    font-size: 13px;
+}
+.ceo{
+    color:steelblue;
+
 }
