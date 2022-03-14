@@ -8,6 +8,24 @@ body {
     /* background-color:#b7bec8; */
     background-color: #b7bec8;
 }
+.maquina{
+    display: block;
+    /* font-family: monospace; */
+    white-space: nowrap;
+    border-right: 1px solid;
+    width: 11ch;
+
+    animation: typing 2s steps(11),
+    blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+@keyframes typing{
+    from {width: 0}
+}
+@keyframes blink{
+    50% {border-color: transparent}
+}
+
 
 footer {
     background-color: #373E48;
@@ -41,8 +59,11 @@ footer {
 }
 
 .navbar-brand {
-    margin-left: 7px;
+    margin-left: 15px;
     margin-right: 0;
+}
+.navbar-brand:hover {
+    color:#d12642;
 }
 
 .card-title{
@@ -94,23 +115,29 @@ footer {
     margin: auto;
     overflow-y: scroll;
 }
+#mapa{
+    
+}
 #ampliar{
     transform: translate(15px, -55px);
 }
 #staff{
-
+    
 }
 #cardstaff{
     /* border: 1px solid #b7bec8; */
     border-radius: 5px;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
-    margin: 20px;
-    /* height: 100%; */
+    margin: 10px;
+    /* padding: 0; */
+    /* height:fit-content; */
 }
 .nombrestaff{
     display: inline;
-    padding-bottom: 0;
+    /* margin-bottom: 100px; */
+    /* padding-bottom: 50px; */
 }
+
 #bio {
     font-size: 13px;
 }

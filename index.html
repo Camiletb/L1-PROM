@@ -21,13 +21,13 @@
         <!--------------------------------------------------------------------->
 
         <div id="marca" class="jumbotron text-center">
-            <!-- <img src="/Imagenes/logo_provi.png" alt="logo" width="64" height="64"></img> -->
-            <h1  class="corpocolor">GOOD SOUP</h1>
+            <!-- <img src="/Imagenes/logo_provip.png" alt="logo" width="64" height="64"></img> -->
+            <h1 class="corpocolor">GOOD SOUP</h1>
         </div>
         <!--Territorio reservado para la rama de la landing page-->
         <!--Segunda prueba-->
         <nav id="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark"> <!-- TODO: Navbar -->
-            <a id="icono_NavBar" class="navbar-brand" href="/index.html"><img id="logo" src="/Imagenes/logo_BN.png" alt="logo" width="32" height="32"></img> GOOD SOUP</a>
+            <a id="icono_NavBar" class="navbar-brand" href="/index.html"><img id="logo" src="/Imagenes/logo_BN.png" alt="logo" width="32" height="32"></img></a>
 
             <!--Collapsable Navbar-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#items" aria-controls="items" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,11 +74,11 @@
                 </div> -->
                 <!-- Contacto -->
                 <div id="right" class="col-md-9 d-flex justify-content-center align-items-center" style="background-color:#b7bec8;">
-                    <div id="presentacion">
+                    <div id="presentacion" class="">
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="ubicacion-tab" data-bs-toggle="tab" data-bs-target="#ubicacion" type="button" role="tab" aria-controls="home" aria-selected="true">Ubicación</button>
+                              <button class="nav-link active" id="ubicacion-tab" data-bs-toggle="tab" data-bs-target="#ubicacion" type="button" role="tab" aria-controls="home" aria-selected="true"><span>Ubicacion</span></button>
                             </li>
                             <li class="nav-item" role="presentation">
                               <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab" aria-controls="profile" aria-selected="false">Staff</button>
@@ -88,14 +88,16 @@
                             </li>
                           </ul>
                           <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active justify-content-center" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
-                                <iframe id="contenedor_mapa" width="500" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
+                            <div class="tab-pane fade show active d-flex justify-content-center align-items-center" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
+                                <iframe id="mapa" width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
                                 <br/>
                                 <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
+                                <hr>
+                                <span>Horario</span>
                             </div>
 
                             <!-- Tab -->
-                            <div class="tab-pane fade justify-content-center" id="staff" role="tabpanel" aria-labelledby="staff-tab">
+                            <div class="tab-pane fade d-flex flex-column justify-content-center align-items-center" id="staff" role="tabpanel" aria-labelledby="staff-tab">
                                 <!-- Cards -->
                                 <!-- Perfil 1 -->
                                 <div id="cardstaff" class="card mb-3" style="max-width: 540px;">
