@@ -6,62 +6,48 @@
     </head>
 
     <body>
-        ¿Te gustar&iacute;a llevar a cabo tu proyecto con nosotros? 
-        ¡Escr&iacute;benos!
+        <p>¿Te gustar&iacute;a llevar a cabo tu proyecto con nosotros? 
+        ¡Escr&iacute;benos!</p>
         <!-- TODO: Barra de progreso, ver solo un campo a la vez -->
         <div class="container">
-            <form class="contrato"> <!-- TODO: Tratar datos formulario -->
+            <form class="contrato" action=""> <!-- TODO: Tratar datos formulario -->
                 <!-- Nombre y Apellidos -->
-                <div class="tab">
-                    <label for="name">Nombre y Apellidos</label>
-                    <input type="text" id="name" name="name" 
-                        placeholder="John Doe"
-                        required>
-                    <br>
+                <div class="tab">Nombre y Apellidos
+                    <p><input type="text" id="name" name="name" 
+                        placeholder="John Doe" class="input"
+                        required></p>
                 </div>
 
                 <!-- Email -->
-                <div class="tab">
-                    <label for="email">Correo electr&oacute;nico</label>
-                    <input type="email" id="email" name="email" 
+                <div class="tab"><p id="a">Correo electrónico</p>
+                    <p><input type="email" id="email" name="email" 
                         placeholder="johndoe@something.com"
-                        required>
-                    <br>
-                </div>
-
-                <!-- Prefijo -->
-                <!-- TODO: Plugin con prefijos y paises-->
-                <div class="tab">
-                    <label for="prefix">Prefijo</label>
-                    <input type="tel" id="prefix" name="prefix"
-                        pattern="+[0-9]{2}" 
-                        placeholder="+34"
-                        required>
-                    <br>
+                        class="input" required></p>
                 </div>
 
                 <!-- Teléfono -->
-                <div class="tab">
-                    <label for="phone">N&uacute;mero de teléfono</label> 
-                    <input type="phone" id="phone" name="phone" 
+                <div class="tab">Prefijo y Número de teléfono
+                    <p id="tlf"><input type="tel" id="prefix" name="prefix"
+                        pattern="+[0-9]{2}" 
+                        placeholder="+34"
+                        class="input" required></p>
+                    <p><input type="tel" id="phone" name="phone" 
                         pattern="[0-9]{9}" 
                         placeholder="612345678" 
-                        required>
-                    <br>
+                        class="input" required></p>
                 </div>
 
                 <!-- Asunto -->
-                <div>
-                    <label for="subject">Cu&eacute;ntanos sobre tu idea</label>
-                    <textarea id="subject" name="subject" 
-                            placeholder="Escribe tu mensaje..." 
-                            required></textarea>
-                    <br>
+                <div class="tab">Cuéntanos sobre tu idea
+                    <p><textarea id="subject" name="subject" 
+                        placeholder="Escribe tu mensaje..." 
+                        class="input" required></textarea></p>
                 </div>
 
-                <!-- Submit -->
-                <input type="submit" id="submit" name="submit"
-                       value="Enviar">
+                <!-- Enviar -->
+                <div>
+                    <button type="submit" class="button">Enviar</button>
+                </div>
             </form>
         </div>
     </body>
