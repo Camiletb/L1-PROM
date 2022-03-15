@@ -117,7 +117,7 @@ footer {
     margin: auto;
 }
 #tabs{
-    /* margin-top:35px; */
+    margin-top:35px;
 }
 .tabubi{
     /* border:1px solid #373E48; */
@@ -146,7 +146,6 @@ footer {
 }
 
 #staff{
-    border:1px solid #d12642;
     /* position: absolute; */
     overflow-y: auto;
     overflow-x:hidden;
@@ -160,7 +159,7 @@ footer {
     border-radius: 5px;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
     margin: 10px;
-    height: 213px;
+    /* height: 213px; */
     /* padding: 0; */
     /* height:fit-content; */
 }
@@ -185,7 +184,7 @@ footer {
 }
 
 .bio {
-    font-size: 13px;
+    font-size: 15px;
 }
 .posicion{
     display: inline;
@@ -214,4 +213,41 @@ footer {
 
 .osc{
     background-color: #373E48;
+}
+
+.dvideo {
+    text-align: center;
+    padding: 1em;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.aaa {
+    border: 1px solid cyan;
+    height: fit-content;
+}
+
+.vh1 {
+    color: #ECECEC;
+    font-family: "Bebas-Neue";
+    font-size: 48px;
+    margin-top: 0.5em;
+}
+
+#miVideo {
+    margin: 1em;
+}
+
+.vcontrols {
+    height: 3em;
+}
+
+.vcontrols > i, #volumen > i {
+    color: #b7bec8;
+}
+
+.vcontrols > i {
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+    margin-bottom: 0.7em;
 }
