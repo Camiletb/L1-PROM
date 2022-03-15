@@ -117,9 +117,10 @@ footer {
     margin: auto;
 }
 #tabs{
-    /* margin-top:35px; */
+    margin-top:35px;
 }
 .tabubi{
+    border:1px solid #373E48;
     /* border:1px solid #373E48; */
     height: 25vh;
     width: 95%;
@@ -215,7 +216,7 @@ footer {
 .osc{
     background-color: #373E48;
 }
-
+/* 
 .dvideo {
     text-align: center;
     padding: 1em;
@@ -251,4 +252,4 @@ footer {
     margin-left: 0.7em;
     margin-right: 0.7em;
     margin-bottom: 0.7em;
-}
+} */
