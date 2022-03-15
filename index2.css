@@ -219,11 +219,14 @@ footer {
     text-align: center;
     padding: 1em;
     height: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+.asignatitulo{
+    padding-top: 10vh;
 }
 
 .aaa {
-    border: 1px solid cyan;
+    /* border: 1px solid cyan; */
     height: fit-content;
 }
 
@@ -236,6 +239,7 @@ footer {
 
 #miVideo {
     margin: 1em;
+    width: 25vw;
 }
 
 .vcontrols {

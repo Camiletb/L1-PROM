@@ -199,8 +199,22 @@
                 <a href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ver mapa más grande</a>
             </small>
         -->
-        <div class="capas osc">
-            <h1>Capa de vídeo</h1>
+        <div class="capas osc text-light">
+            <h1 class="asignatitulo text-center">Capa de vídeo</h1>
+            <div class="aaa d-flex justify-content-center">
+                <div class="dvideo">
+                    <video id="miVideo" src="/Imagenes/barney.mp4"></video>
+                    <div class="vcontrols">
+                        <i id="play" class="fa fa-play" onclick="playVideo()"></i>
+                        <i id="stop" class="fa fa-stop" onclick="stopVideo()"></i>
+                        <i id="ff" class="fa fa-forward" onclick="ffVideo()"></i>
+                        <i id="icoVol" class="fa fa-volume-up"></i>
+                        <input id="vol" min="0" max="1" value="1" step="0.01" type="range"
+                        onchange="changeVolume()">
+                        <i id="fs" class="fa fa-expand" onclick="fsVideo()"></i>
+                    </div>
+                </div>
+            </div>
         </div>
         <footer class="jumbotron text-center footer-dark">
             <div>Pie de página</div>
