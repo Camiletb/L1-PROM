@@ -80,7 +80,7 @@ footer {
     margin-right: 5px;
 }
 .capas {
-    height: 75vh;
+    height: 110vh;
 }
 #landing_page {
     height:75vh;
@@ -214,4 +214,41 @@ footer {
 
 .osc{
     background-color: #373E48;
+}
+
+.dvideo {
+    text-align: center;
+    padding: 1em;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.aaa {
+    border: 1px solid cyan;
+    height: fit-content;
+}
+
+.vh1 {
+    color: #ECECEC;
+    font-family: "Bebas-Neue";
+    font-size: 48px;
+    margin-top: 0.5em;
+}
+
+#miVideo {
+    margin: 1em;
+}
+
+.vcontrols {
+    height: 3em;
+}
+
+.vcontrols > i, #volumen > i {
+    color: #b7bec8;
+}
+
+.vcontrols > i {
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+    margin-bottom: 0.7em;
 }
