@@ -5,7 +5,6 @@
 
 body {
     margin: 0; /* Para quitar el por defecto */
-    /* background-color:#b7bec8; */
     background-color: #b7bec8;
     overflow-x: hidden;
 }
@@ -97,6 +96,7 @@ footer {
     /* offset:1px solid#535D6C; */
 }
 #right {
+    background-color:#b7bec8;
     /* border-left: 1px solid gainsboro; */
 }
 
@@ -175,10 +175,10 @@ footer {
     /* padding-bottom: 50px; */
 }
 
-#bio {
+.bio {
     font-size: 13px;
 }
-#posicion{
+.posicion{
     display: inline;
     margin-left: 15px;
     padding: 2px 5px 2px 5px;
