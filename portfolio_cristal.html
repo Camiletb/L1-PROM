@@ -142,6 +142,22 @@
                     <h1>Prom</h1>
                     
                     <br/><p>Próximamente</p>
+
+                    <div class="aaa d-flex justify-content-center">
+                        <div class="dvideo">
+                            <h1 class="vh1">Vídeo de presentación</h1>
+                            <video id="miVideo" src="/Imagenes/barney.mp4" height="200"></video>
+                            <div class="vcontrols">
+                                <i id="play" class="fa fa-play" onclick="playVideo()"></i>
+                                <i id="stop" class="fa fa-stop" onclick="stopVideo()"></i>
+                                <i id="ff" class="fa fa-forward" onclick="ffVideo()"></i>
+                                <i id="icoVol" class="fa fa-volume-up"></i>
+                                <input id="vol" min="0" max="1" value="1" step="0.01" type="range"
+                                onchange="changeVolume()">
+                                <i id="fs" class="fa fa-expand" onclick="fsVideo()"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
