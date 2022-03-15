@@ -73,27 +73,37 @@
                     <div class="mask"></div>
                 </div> -->
                 <!-- Contacto -->
-                <div id="right" class="col-md-9 d-flex justify-content-center align-items-center" style="background-color:#b7bec8;">
-                    <div id="presentacion" class="">
+                <div id="right" class="col-md-9 d-flex flex-column justify-content-center align-items-center" style="background-color:#b7bec8;">
+                    <div>
 
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="ubicacion-tab" data-bs-toggle="tab" data-bs-target="#ubicacion" type="button" role="tab" aria-controls="home" aria-selected="true"><span>Ubicacion</span></button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab" aria-controls="profile" aria-selected="false">Staff</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab" aria-controls="contact" aria-selected="false">Contacto</button>
-                            </li>
-                          </ul>
-                          <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active d-flexjustify-content-center align-items-center" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
-                                <iframe id="mapa" width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
-                                <br/>
-                                <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
-                            </div>
-
+                        <div id="presentacion" class="">
+                            
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="ubicacion-tab" data-bs-toggle="tab" data-bs-target="#ubicacion" type="button" role="tab" aria-controls="home" aria-selected="true"><span>Ubicacion</span></button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab" aria-controls="profile" aria-selected="false">Staff</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab" aria-controls="contact" aria-selected="false">Contacto</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active " id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
+                                    <div id="mapapanel" class="row">
+                                        <!-- Mapa -->
+                                        <div>
+                                            <iframe id="mapa" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
+                                            <br/>
+                                            <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
+                                        </div>
+                                        <!-- Horario -->
+                                        <div id="horario">
+                                            <p></p>
+                                        </div>   
+                                    </div>
+                                </div>
                             <!-- Tab -->
                             <div class="tab-pane fade d-flex flex-column justify-content-center align-items-center" id="staff" role="tabpanel" aria-labelledby="staff-tab">
                                 <!-- Cards -->
@@ -108,15 +118,15 @@
                                                 <h5 class="card-title nombrestaff">Camiletb</h5>
                                                 <p id="posicion" class="card-text badge rounded-pill bg-light ceo"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> CEO</small></p><hr/>
                                                 <p id="bio"class="card-text"><span class="punchline">De profesión curioso, lo demás son hobbies.</span><br/>
-                                                ¿Qué hago? Pues desde mochilas hasta software. Soy socorrista, músico, diseñador gráfico, maker y eterno estudiante, y mañana algo más, pero no mejor.
+                                                    ¿Qué hago? Pues desde mochilas hasta software. Soy socorrista, músico, diseñador gráfico, maker y eterno estudiante, y mañana algo más, pero no mejor.
                                                 </p>
                                                 <!-- Split dropup button -->
                                                 <div id="btnperfil" class="btn-group dropup">
                                                     <button type="button" class="btn btn-light text-dark">
-                                                    Perfil
+                                                        Perfil
                                                     </button>
                                                     <button type="button" class="btn btn-light text-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden"></span>
+                                                        <span class="visually-hidden"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="contrato.html">Github</a></li>
@@ -124,7 +134,6 @@
                                                         <li><div class="dropdown-divider"></div></li>
                                                         <li><a class="dropdown-item" href="#">Enviar email</a></li>
                                                         <li><a class="dropdown-item" href="#">Contactar por telegram</a></li>
-                                                    <!-- Dropdown menu links -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -148,10 +157,10 @@
                                                 <!-- Split dropup button -->
                                                 <div id="btnperfil" class="btn-group dropup">
                                                     <button type="button" class="btn btn-light text-dark">
-                                                    Perfil
+                                                        Perfil
                                                     </button>
                                                     <button type="button" class="btn btn-light text-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <span class="visually-hidden"></span>
+                                                        <span class="visually-hidden"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" href="contrato.html">Github</a></li>
@@ -159,7 +168,7 @@
                                                         <li><div class="dropdown-divider"></div></li>
                                                         <li><a class="dropdown-item" href="#">Enviar email</a></li>
                                                         <li><a class="dropdown-item" href="#">Contactar por telegram</a></li>
-                                                    <!-- Dropdown menu links -->
+                                                        <!-- Dropdown menu links -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -167,15 +176,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">...</div>
-                          </div>
+                            <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">...
+
+                            </div>
+                        </div>
                         
-
-                        <!-- TODO: Rellenar -->
-                        <!-- ? Correo, curriculum, objetivo web, foto -->
-                        <!-- ? Carrusel con empresas -->
-
+                        <div id="clientes" class="card-footer">
+                            Card footer
+                        </div>
                     </div>
+                    <div id="clientes" class="card">
+                        <div class="row g-0">
+                            <div class="col-sm-3">
+                                <h5 class="card-header">Clientes</h5>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="card-body">
+                                    This is some text within a card body.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
