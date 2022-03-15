@@ -89,34 +89,35 @@
                                     <button class="nav-link" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab" aria-controls="contact" aria-selected="false">Contacto</button>
                                 </li>
                             </ul>
-                            <div class="tab-content" id="myTabContent">
+                            <div class="tab-content" id="tabMapa">
                                 <div class="tab-pane fade show active " id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
                                     <div id="mapapanel" class="row">
                                         <!-- Mapa -->
-                                        <div>
-                                            <iframe id="mapa" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
-                                            <br/>
-                                            <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
-                                        </div>
+                                            <iframe id="mapa" height="300" width="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.3543305397033692%2C39.47547521194739%2C-0.3342461585998535%2C39.486339762239105&amp;layer=mapnik&amp;marker=39.48090769923223%2C-0.34428834915161133" style="border: 2px solid gainsboro"></iframe>
+                                            <!-- <br/> -->
+                                            <!-- <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a> -->
+                                        
                                         <!-- Horario -->
-                                        <div id="horario">
+                                        <!-- <div id="horario">
                                             <p></p>
-                                        </div>   
+                                        </div>    -->
                                     </div>
+                                    <a id="ampliar" href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443" class="btn btn-primary btn-light btn-block" target="_blank">Ampliar</a>
+
                                 </div>
                             <!-- Tab -->
                             <div class="tab-pane fade d-flex flex-column justify-content-center align-items-center" id="staff" role="tabpanel" aria-labelledby="staff-tab">
                                 <!-- Cards -->
                                 <!-- Perfil 1 -->
-                                <div id="cardstaff" class="card mb-3" style="max-width: 540px;">
+                                <div class="tab-content card cardstaff" id="tabStaff">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="Imagenes/perfil1.jpg" class="img-fluid rounded-start" alt="...">
+                                            <img src="Imagenes/perfil1.jpg" class="img-fluid rounded-start" alt="Foto de Camilo" title="Foto de Camilo">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title nombrestaff">Camiletb</h5>
-                                                <p id="posicion" class="card-text badge rounded-pill bg-light ceo"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> CEO</small></p><hr/>
+                                                <p id="posicion" class="card-text badge rounded-pill bg-light fe"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> Front-end</small></p><hr/>
                                                 <p id="bio"class="card-text"><span class="punchline">De profesión curioso, lo demás son hobbies.</span><br/>
                                                     ¿Qué hago? Pues desde mochilas hasta software. Soy socorrista, músico, diseñador gráfico, maker y eterno estudiante, y mañana algo más, pero no mejor.
                                                 </p>
@@ -141,7 +142,7 @@
                                     </div>
                                 </div>
                                 <!-- Perfil 2 -->
-                                <div id="cardstaff" class="card mb-3" style="max-width: 540px;">
+                                <div class="card mb-3 cardstaff">
                                     <div class="row g-0">
                                         <div class="col-md-4">
                                             <img src="Imagenes/perfil2.jpg" class="img-fluid rounded-start" alt="...">
@@ -149,7 +150,7 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title nombrestaff">Cristal</h5>
-                                                <p id="posicion" class="card-text badge rounded-pill bg-light ceo"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> CEO</small></p><hr/>
+                                                <p id="posicion" class="card-text badge rounded-pill bg-light be"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><small class="text-muted"> Back-end</small></p><hr/>
                                                 <p id="bio"class="card-text"><span class="punchline">Vosotros nacisteis por cesárea, yo por desgracia.</span><br/>
                                                     Me tiro la vida procrastinando, y por algún motivo todo acaba saliendo a pedir de Milhouse.
                                                     Estaba en primaria, pestañeé, y acabé en la ETSE.
@@ -209,6 +210,9 @@
                 <a href="https://www.openstreetmap.org/?mlat=39.4809&amp;mlon=-0.3443#map=16/39.4809/-0.3443">Ver mapa más grande</a>
             </small>
         -->
+        <div class="capas" style="background-color: #373E48;">
+            <h1>Capa de vídeo</h1>
+        </div>
         <footer class="jumbotron text-center footer-dark">
             <div>Pie de página</div>
         </footer>
