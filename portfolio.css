@@ -34,6 +34,7 @@ width: 30vh;
     background-color: #373E48;
     /* background-color: #ECECEC; */
     /* background-color: white; */
+    border: 1px solid lightskyblue;
     border-radius: 4px;
     height: 59vh;
     width: 55vw;
@@ -54,6 +55,29 @@ width: 30vh;
     
 }
 .fotoasignatura{
-    margin-top: 30px;
+    margin: 30px 30px;
     height: 20vh;
+    width: 15vw;
+    filter: grayscale(100%) blur(1px);
+    transition: filter .5s ease-in-out;
+    transform: scale(1) translate(0, 0);
+    transition: transform 120ms ease-in;
+}
+.fotoasignatura:hover{
+    filter: none;
+    transform: scale(1.02);
+}
+figure{
+    display: flex;
+}
+.asignacap{
+    display: inline;
+    width: 15vw;
+    background-color:#181a1b;
+    opacity: 50%;
+    transform:translate(0px 35px);
+}
+
+.asignatitulo{
+    padding-top: 10vh;
 }
