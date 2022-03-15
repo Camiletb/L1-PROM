@@ -117,7 +117,7 @@ footer {
     margin: auto;
 }
 #tabs{
-    margin-top:35px;
+    /* margin-top:35px; */
 }
 .tabubi{
     /* border:1px solid #373E48; */
@@ -140,37 +140,46 @@ footer {
 #mapa{
     height: 20vh;
 }
-#ampliar{
-    /* transform: translate(15px, -55px); */
-}
 #clientes{
     position: absolute;
     bottom: 0;
 }
-.hrvertical{
-    
-    /* border:         none;
-    border-left:    1px solid hsla(200, 10%, 50%,100);
-    height:         100vh;
-    width:          1px;        */
-    
-}
+
 #staff{
-    overflow-y: scroll;
+    border:1px solid #d12642;
+    /* position: absolute; */
+    overflow-y: auto;
     overflow-x:hidden;
+    position: relative;
+    top: -25vh;
     
 }
 .cardstaff{
     /* border: 1px solid #b7bec8; */
-    max-width: 540px;
+    /* max-width: 500px; */
     border-radius: 5px;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
     margin: 10px;
+    height: 213px;
     /* padding: 0; */
     /* height:fit-content; */
 }
+.aux{
+    /* height:fit-content; */
+    border: 1px solid black;
+}
+.imc{
+    /* padding: 10px 10px; */
+    margin-top: auto;
+    margin-bottom: auto;
+    /* height: 110%; */
+    /* margin: 5px 5px; */
+    /* border-radius: 20px 0px; */
+    /* border-radius: 20px 0px; */
+}
 .nombrestaff{
     display: inline;
+    padding-bottom: 0;
     /* margin-bottom: 100px; */
     /* padding-bottom: 50px; */
 }
