@@ -7,10 +7,12 @@ function playVideo() {
     if (!vid.paused) {
         vid.pause();
         play.className = "fa fa-play";
+        vid.style.border = "2px solid #ECECEC";
     }
     else {
         vid.play();
         play.className = "fa fa-pause";
+        vid.style.border = "2px solid #373E48";
     }
 }
 

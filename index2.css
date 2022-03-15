@@ -241,6 +241,7 @@ footer {
 #miVideo {
     margin: 1em;
     width: 25vw;
+    border: 2px solid #ECECEC;
 }
 
 .vcontrols {
