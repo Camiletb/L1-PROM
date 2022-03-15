@@ -152,6 +152,10 @@ footer {
     color:steelblue;
 
 }
+.punchline{
+    font-weight:500;
+    font-size: 14px;
+}
 #logomarca{
     /* padding: 10px; */
     margin-left: 10px;
