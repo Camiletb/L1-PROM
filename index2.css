@@ -159,6 +159,7 @@ footer {
     border-radius: 5px;
     box-shadow: 0em 0em 0.7em 0.03em rgba(83, 93, 108, 0.2);
     margin: 10px;
+    /* height: max-content; */
     /* height: 213px; */
     /* padding: 0; */
     /* height:fit-content; */
