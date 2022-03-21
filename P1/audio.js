@@ -7,17 +7,17 @@ var cb = document.getElementById("cb");
 function changeSong(song) {
     audio.src = song;
 
-    if (song == '/Imagenes/rickroll.mp3') {
+    if (song == '/P1/Imagenes/rickroll.mp3') {
         rr.style.color = "red";
         yq.style.color = "white";
         cb.style.color = "white";
     }
-    else if (song == '/Imagenes/yoquiero.mp3') {
+    else if (song == '/P1/Imagenes/yoquiero.mp3') {
         rr.style.color = "white";
         yq.style.color = "red";
         cb.style.color = "white";
     }
-    else if (song == '/Imagenes/cumbia.mp3') {
+    else if (song == '/P1/Imagenes/cumbia.mp3') {
         rr.style.color = "white";
         yq.style.color = "white";
         cb.style.color = "red";
