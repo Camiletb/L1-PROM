@@ -3,7 +3,7 @@
     <head>
         <!--Cristal Abad y Camilo Enguix Nadal-->
         <meta charset="utf-8">
-        <title>HTML</title>
+        <title>GOOD SOUP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -28,7 +28,7 @@
         <!--Territorio reservado para la rama de la landing page-->
         <!--Segunda prueba-->
         <nav id="navbar" class="navbar navbar-expand-lg bg-dark navbar-dark"> <!-- TODO: Navbar -->
-            <a id="icono_NavBar" class="navbar-brand" href="/P1/index.html"><img id="logo" src="/P1/Imagenes/l0.png" alt="logo" width="30" height="40"></img></a>
+            <a id="icono_NavBar" class="navbar-brand" href="/P1/index.html"><!--<img id="logo" src="/P1/Imagenes/l0.png" alt="logo" width="30" height="40"></img>-->GOOD SOUP</a>
 
             <!--Collapsable Navbar-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#items" aria-controls="items" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,28 +36,28 @@
             </button>
             
             <!-- Para que se reduzca en móvil -->
-            <div id="items" class="collapse navbar-collapse">
+            <nav id="items" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto"> <!-- TODO: Enlaces -->
                     <li class="nav-item"><a class="nav-link disabled" href="#">Software</a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Hardware</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link visually-hidden disabled" href="#">Galería</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">Contacto</a>
                         <ul id="dropdown-menu-navbar" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown1">
                             <h6 class="dropdown-header">Formularios de contacto</h6>
-                            <li><a class="dropdown-item" onclick="Cargar('/P1/contrato.html', 'landing_page')" target="_blank">Contratación</a></li>
-                            <li><a class="dropdown-item disabled" href="#">Oferta de empleo</a></li>
+                            <li><a class="dropdown-item disabled" onclick="Cargar('/P1/contrato.html', 'landing_page')" target="_blank">Contratación</a></li>
+                            <li><a class="dropdown-item" onclick="Cargar('/P1/te_contrato.html', 'landing_page')" target="_blank">Oferta de empleo</a></li>
                             <li><div class="dropdown-divider"></div></li>
                             <h6 class="dropdown-header">Más información</h6>
                             <li><a class="dropdown-item" href="/P1/portfolio_cami.html">Sobre nosotros</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </nav>
             <div id="searchbar" class="">
                 <form id="search">  <!-- TODO: Búsqueda funcional -->
-                    <input type="text" placeholder="Buscar">
-                    <button class="btn btn-dark text-light" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" placeholder="Próximamente...">
+                    <button class="btn btn-dark text-light disabled" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>
         </nav>
@@ -219,7 +219,7 @@
 
         <div class="capas bg-dark text-light">
             <h1 class="asignatitulo text-center">Capa de audio</h1>
-            <div class="audio">
+            <div class="audio container">
                 <p><a id="rr" style="color:red" onclick="changeSong('/P1/Imagenes/rickroll.mp3')">Never Gonna Give You Up - Rick Astley</a></p>
                 <p><a id="yq" onclick="changeSong('/P1/Imagenes/yoquiero.mp3')">Inténtalo - 3BallMTY</a></p>
                 <p><a id="cb" onclick="changeSong('/P1/Imagenes/cumbia.mp3')">Lavender Town Cumbia</a></p>

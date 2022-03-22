@@ -27,7 +27,7 @@
         </div>
 
         <nav id="navbar" class="navbar navbar-expand-lg navbar-dark"> <!-- TODO: Navbar -->
-            <a id="icono_NavBar" class="navbar-brand" href="/P1/index.html"><img id="logo" src="/P1/Imagenes/L0.png" alt="logo" width="30" height="40"></img></a>
+            <a id="icono_NavBar" class="navbar-brand" href="/P1/index.html"><!--<img id="logo" src="/P1/Imagenes/L0.png" alt="logo" width="30" height="40"></img>--> GOOD SOUP</a>
 
             <!--Collapsable Navbar-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#items" aria-controls="items" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,26 +37,23 @@
             <!-- Para que se reduzca en móvil -->
             <div id="items" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto"> <!-- TODO: Enlaces -->
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Software</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Hardware</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Galería</a></li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item"><a class="nav-link visually-hidden disabled" href="#">Software</a></li>
+                    <li class="nav-item"><a class="nav-link visually-hidden disabled" href="#">Hardware</a></li>
+                    <li class="nav-item"><a class="nav-link visually-hidden disabled" href="#">Galería</a></li>
+                    <li class="nav-item dropdown visually-hidden">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" href="#">Contacto</a>
                         <ul id="dropdown-menu-navbar" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown1">
                             <h6 class="dropdown-header">Formularios de contacto</h6>
-                            <li><a class="dropdown-item" href="/P1/contrato.html">Contratación</a></li>
+                            <li><a class="dropdown-item" href="/P1/te_contrato.html">Contratación</a></li>
                             <li><a class="dropdown-item" href="#">Oferta de empleo</a></li>
-                            <li><div class="dropdown-divider"></div></li>
-                            <h6 class="dropdown-header">Más información</h6>
-                            <li><a class="dropdown-item" href="#">Sobre nosotros</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <div id="searchbar" class="">
-                <form id="search">  <!-- TODO: Búsqueda funcional -->
-                    <input type="text" placeholder="Buscar">
-                    <button class="btn btn-dark text-light" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <form id="search" class="visually-hidden">  <!-- TODO: Búsqueda funcional -->
+                    <input type="text" placeholder="Buscar" class="">
+                    <button class="btn btn-dark text-light disabled" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>
         </nav>

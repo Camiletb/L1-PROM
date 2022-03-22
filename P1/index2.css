@@ -80,10 +80,10 @@ footer {
     margin-right: 5px;
 }
 .capas {
-    height: 75vh;
+    min-height: 75vh;
 }
 #landing_page {
-    height:75vh;
+    min-height:75vh;
 }
 #left{
     background-color: white;

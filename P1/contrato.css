@@ -3,18 +3,15 @@
     src: url(/P1/Fuentes/BebasNeue-Regular.ttf);
 }
 
-body {
-    background-color: #B7BEC8;
-}
 
-body > p {
+/* body > p {
     font-family: "Bebas-Neue";
     font-size: 2em;
     text-align: center;
     color: #373E48;
-}
+} */
 
-.contrato {
+/* .contrato {
     margin-left: auto;
     margin-right: auto;
     margin-top: 2em;
@@ -71,21 +68,21 @@ body > p {
 
 .tab > textarea {
     height: 10em;
+} */
+body {
+    background-color:#292b2c;
 }
 
-.button {
-    height: 3em;
-    width: 7em;
-    border: 0px solid;
-    background-color: #535D6C;
-    color: #ECECEC;
-    transition-duration: 0.2s;
-    border-radius: 0.3em;
+#capaTeContrato{
+    height: 100%;
 }
 
-.button:hover {
-    background-color: #B7BEC8;
-    color: #535D6C;
-    transition-duration: 0.2s;
-    border-radius: 0.3em;
+h6{
+    color:#535D6C;
+    padding-bottom: 10px;
+    border-bottom:1px solid #ECECEC;
+}
+
+.fascia{
+    margin: 20px;
 }
