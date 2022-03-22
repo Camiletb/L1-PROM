@@ -12,51 +12,47 @@
 <body>
     <div class="fascia row">
         <!-- Panel de juego -->
-        <div class="col-md-5 bg-dark">
-
+        <div id="panel" class="col-lg-2 bg-dark">
             <form class="row g-3 container needs-validation" novalidate">
-                <h6 class=" text-light mt-5">Jugadores</h6>
-                <div class=" form-floating col-12">
-                    <input type="text" class="form-control" id="inputJ1" placeholder="Jugador 1" value="">
+                <h6 class=" text-light mt-5 mb-0">Jugadores</h6>
+                <div class=" form-floating text-secondary col-12">
+                    <input type="text" class="form-control bg-dark text-light" id="inputJ1" placeholder="Jugador 1" value="">
                     <label for="inputJ1">Nombre del jugador 1</label>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
-                <div class=" form-floating col-12">
-                    <input type="text" class="form-control" id="inputJ2" placeholder="Jugador 2" value="">
+                <div class=" form-floating text-secondary col-12">
+                    <input type="text" class="form-control bg-dark text-light" id="inputJ2" placeholder="Jugador 2" value="">
                     <label for="inputJ2">Nombre del jugador 2</label>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
-                <h6 class=" text-light mt-5">Dificultad</h6>
-            <div class="form-floating col-md-6">
-                <input type="number" class="form-control" id="inputTamPala" placeholder="Tamaño pala" value="12">
-                <label for="inputTamPala" class="form-label">Tamaño de la pala</label>
-            </div>
-            <div class="form-floating col-md-6">
-                <input type="number" class="form-control" id="inputVelBola" placeholder="Velocidad bola" value="20">
-                <label for="inputVelBola" class="form-label">Velocidad de la bola</label>
-            </div>
-                <h6 class=" text-light mt-5">Sonido</h6>
-            <div class="form-floating col-12">
-                <label for="inputVol" class="form-label">Volumen</label>
-                <input type="range" class="form-range" min="0" max="100" step="0.5" id="inputVol">
-                <!-- <input type="number" class="form-control" id="inputTamPala" placeholder="Tamaño pala" value="12">
-                <label for="inputTamPala" class="form-label">Tamaño de la pala</label> -->
-            </div>
+                    <h6 class=" text-light mt-5 mb-0">Dificultad</h6>
+                <div class="form-floating text-secondary col-md-12">
+                    <input type="number" class="form-control bg-dark text-light" id="inputTamPala" placeholder="Tamaño pala" value="12">
+                    <label for="inputTamPala" class="form-label">Tamaño de la pala</label>
+                </div>
+                <div class="form-floating text-secondary col-md-12">
+                    <input type="number" class="form-control bg-dark text-light" id="inputVelBola" placeholder="Velocidad bola" value="20">
+                    <label for="inputVelBola" class="form-label">Velocidad de la bola</label>
+                </div>
+                    <h6 class=" text-light mt-5 mb-0">Sonido</h6>
+                <div class="form-floating col-12">
+                    <label for="inputVol" class="form-label">Volumen</label>
+                    <input type="range" class="form-range" min="0" max="100" step="0.5" id="inputVol">
+                    <!-- <input type="number" class="form-control" id="inputTamPala" placeholder="Tamaño pala" value="12">
+                    <label for="inputTamPala" class="form-label">Tamaño de la pala</label> -->
+                </div>
             
-            
-            
-            <div class="col-12 text-end">
-                <button type="submit" class="btn btn-secondary">Empezar partida</button>
-            </div>
-        </form>
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-secondary">Empezar partida</button>
+                </div>
+            </form>
         </div>
         <!-- Canvas -->
-        <div class="col-md-5">
-
+        <div class="col-lg-9">
             <canvas id="campo" height="400" width="600"></canvas>
             
             <script src="juego.js"></script>

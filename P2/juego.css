@@ -4,3 +4,6 @@
 .fascia{
     margin: 15px;
 }
+#panel{
+    min-width: 18vw;
+}
