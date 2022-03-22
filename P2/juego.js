@@ -4,9 +4,9 @@ var ctx = canvas.getContext("2d");
 
 // Medidas
 var largo_pala = 50;
-var line_dash = [7, 3];
-var radio_centro = 70;
-var radio_bola = 15;
+var line_dash = [5, 3];
+var radio_centro = 50;
+var radio_bola = 10;
 var width = canvas.width;
 var height = canvas.height;
 

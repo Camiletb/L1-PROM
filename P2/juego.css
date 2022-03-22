@@ -1,14 +1,14 @@
 #campo {
     border: 2px solid black;
     height: 48vh;
-    border-radius: 3px;
+    min-width: 18vw;
 }
 .fascia{
     margin: 15px;
 }
 #panel{
     min-width: 18vw;
-    max-height: 48vh;
+    height: 48vh;
     border-radius: 3px;
     /* box-shadow:1px 1px #292b2c; */
 }
