@@ -11,14 +11,14 @@ class Vector {
         _y /= norma; 
     }
 
-    add(x, y) {
-        this._x += x;
-        this._y += y;
+    add(v) {
+        this._x += v.x;
+        this._y += v.y;
     }
 
-    sub(x, y) {
-        this._x -= x;
-        this._y -= y;
+    sub(v) {
+        this._x -= v.x;
+        this._y -= v.y;
     }
 
     mult(n){
@@ -73,10 +73,11 @@ var deltaY;
 var dir_bola;
 var salida_bola;
 
+// Auxiliares
+var cont = 0;
 
 window.onload = start();
-
-function start() {
+function start(){
     // Lienzo
     canvas = document.getElementById("campo");
     ctx = canvas.getContext("2d");
@@ -99,7 +100,11 @@ function start() {
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
-    pos_bola = centro_campo;
+    pos_bola = new Vector(centro_campo.x, centro_campo.y);
+    console.log(pos_bola.x);
+    console.log(pos_bola.y);
+    deltaX = 10;
+    deltaY = 10;
     salida_bola = (Math.floor(Math.random()*10)%4);
     switch(salida_bola) {
         case 0:
@@ -116,7 +121,6 @@ function start() {
             dir_bola = new Vector(Math.cos(toRad(325)), Math.sin(toRad(325)));
             break;
     }
-    console.log(dir_bola.x);
 
     // Imágenes
     imgPala1 = new Image();
@@ -126,8 +130,8 @@ function start() {
     imgPala2.src= "./pala2.png";
     patPala2 = ctx.createPattern(imgPala2, "repeat");
     
-
-    setInterval(draw(), 100);
+    
+    setInterval(update, 100);
 }
 
 function draw() {
@@ -162,11 +166,13 @@ function draw() {
     ctx.beginPath();
     ctx.setLineDash([]);
     ctx.strokeStyle = "indigo";
-    grad_bola = ctx.createRadialGradient(centro_campo.x, centro_campo.y, radio_bola, centro_campo.x, centro_campo.y, radio_bola/5);
+    console.log(pos_bola.x);
+    console.log(pos_bola.y);
+    grad_bola = ctx.createRadialGradient(pos_bola.x, pos_bola.y, radio_bola, pos_bola.x, pos_bola.y, radio_bola/5);
     grad_bola.addColorStop(0, "indigo");
     grad_bola.addColorStop(1, "mediumvioletred");
     ctx.fillStyle = grad_bola;
-    ctx.arc(centro_campo.x, centro_campo.y, radio_bola, 0, 2*Math.PI);
+    ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2*Math.PI);
     ctx.fill();
     ctx.stroke();
 
@@ -184,11 +190,28 @@ function draw() {
     //ct_x.fill();
     ctx.stroke();
 }
+function update() {
+    moverBola();
+    draw();
+    cont++;
+    console.log(cont);
+}
 
 function moverBola() {
-    pos_bola = [pos_bola.x+deltaX, pos_bola.y+deltaY];
+    evaluarBordes();
+    pos_bola.add(new Vector(deltaX, deltaY));
+    
 }
 
 function toRad(grados) {
     return (grados * 2 * Math.PI / 360);
+}
+
+function evaluarBordes(){
+    // Gol
+    if(pos_bola.x <= 0 + radio_bola || pos_bola.x >= width - radio_bola)
+        start();
+    // Rebote
+    if(pos_bola.y <= 0 + radio_bola || pos_bola.y >= height - radio_bola)
+        dir_bola.y = -dir_bola.y;
 }
