@@ -101,6 +101,7 @@ function start(){
 
     // Bola
     pos_bola = new Vector(centro_campo.x, centro_campo.y);
+    dir_bola = new Vector(0, 0);
     console.log(pos_bola.x);
     console.log(pos_bola.y);
     deltaX = 10;
@@ -108,17 +109,17 @@ function start(){
     salida_bola = (Math.floor(Math.random()*10)%4);
     switch(salida_bola) {
         case 0:
-            dir_bola = new Vector(Math.cos(toRad(35)), Math.sin(toRad(35)));
+            dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
             break;
         case 1:
-            dir_bola = new Vector(Math.cos(toRad(145)), Math.sin(toRad(145)));
+            dir_bola = new Vector(Math.cos(toRad(125)), Math.sin(toRad(125)));
             break;
         case 2:
-            dir_bola = new Vector(Math.cos(toRad(215)), Math.sin(toRad(215)));
+            dir_bola = new Vector(Math.cos(toRad(235)), Math.sin(toRad(235)));
             break;
         case 3:
         default:
-            dir_bola = new Vector(Math.cos(toRad(325)), Math.sin(toRad(325)));
+            dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
             break;
     }
 
@@ -131,7 +132,7 @@ function start(){
     patPala2 = ctx.createPattern(imgPala2, "repeat");
     
     
-    setInterval(update, 100);
+    setInterval(update, 10);
 }
 
 function draw() {
@@ -199,7 +200,8 @@ function update() {
 
 function moverBola() {
     evaluarBordes();
-    pos_bola.add(new Vector(deltaX, deltaY));
+    // pos_bola.add(new Vector(deltaX, deltaY));
+    pos_bola.add(dir_bola);
     
 }
 
@@ -209,9 +211,18 @@ function toRad(grados) {
 
 function evaluarBordes(){
     // Gol
-    if(pos_bola.x <= 0 + radio_bola || pos_bola.x >= width - radio_bola)
+    if(pos_bola.x <= 0 + radio_bola || pos_bola.x >= width - radio_bola){
         start();
+        console.log("a");
+    }
     // Rebote
-    if(pos_bola.y <= 0 + radio_bola || pos_bola.y >= height - radio_bola)
-        dir_bola.y = -dir_bola.y;
+    if(pos_bola.y <= 0 + radio_bola){
+        dir_bola = new Vector(dir_bola.x, -dir_bola.y);
+    } else 
+    if(pos_bola.y > height - 2*radio_bola){
+        // dir_bola.y *= -1;
+        dir_bola = new Vector(dir_bola.x, -dir_bola.y);
+        console.log("b");
+
+    }
 }
