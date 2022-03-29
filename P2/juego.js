@@ -38,12 +38,6 @@ class Vector {
     get y(){
         return this._y;
     }
-    set x(a){
-        this._x = a;
-    }
-    set y(a){
-        this._y = a;
-    }
 }
 
 // Lienzo
@@ -168,31 +162,31 @@ function draw() {
     ctx.beginPath();
     ctx.setLineDash([]);
     ctx.strokeStyle = "indigo";
-    grad_bola = ctx.createRadialGradient(centro_campo[0], centro_campo[1], radio_bola, centro_campo[0], centro_campo[1], radio_bola/5);
+    grad_bola = ctx.createRadialGradient(centro_campo.x, centro_campo.y, radio_bola, centro_campo.x, centro_campo.y, radio_bola/5);
     grad_bola.addColorStop(0, "indigo");
     grad_bola.addColorStop(1, "mediumvioletred");
     ctx.fillStyle = grad_bola;
-    ctx.arc(centro_campo[0], centro_campo[1], radio_bola, 0, 2*Math.PI);
+    ctx.arc(centro_campo.x, centro_campo.y, radio_bola, 0, 2*Math.PI);
     ctx.fill();
     ctx.stroke();
 
     // Pala 1
     ctx.beginPath();
     //ct_x.fillStyle = patPala1;
-    ctx.fillRect(pos_pala1[0], pos_pala1[1], 20, largo_pala);
+    ctx.fillRect(pos_pala1.x, pos_pala1.y, 20, largo_pala);
     //ct_x.fill();
     ctx.stroke();
 
     // Pala 2
     ctx.beginPath();
     //ct_x.fillStyle = patPala2;
-    ctx.fillRect(pos_pala2[0] - 20, pos_pala2[1], 20, largo_pala);
+    ctx.fillRect(pos_pala2.x - 20, pos_pala2.y, 20, largo_pala);
     //ct_x.fill();
     ctx.stroke();
 }
 
 function moverBola() {
-    pos_bola = [pos_bola[0]+deltaX, pos_bola[0]+deltaY];
+    pos_bola = [pos_bola.x+deltaX, pos_bola.y+deltaY];
 }
 
 function toRad(grados) {
