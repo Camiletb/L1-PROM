@@ -129,7 +129,11 @@ var salida_bola;
 
 // Auxiliares
 var cont = 0;
+var cont1 = 0;
+var cont2 = 0;
 var gol = false;
+
+
 window.onload = start();
 function start(){
     // Lienzo
@@ -173,9 +177,8 @@ function start(){
     //rutaPala2 = new Image();
     //rutaPala2.src= "./pala2.png";
     //patPala2 = ctx.createPattern(rutaPala2, "repeat");
-    console.log("Antes: " + gol);
     
-    console.log("Es gol?");
+    console.log("Marcador");
     setInterval(update, 10);
     
 }
@@ -249,17 +252,16 @@ function update() {
         evaluarBordes();
         moverBola();
         draw();
-        console.log("No");
         
     }else{
         //setTimeout(evaluarBordes, 3000);
         //setTimeout(moverBola, 3000);
         setTimeout(draw, 3000);
         setTimeout(click, 3000);
-        console.log("Sí");
     }
     //}
     cont++;
+    console.log("J1: " + cont1 + " - " + cont2 + " :J2")
 }
 function click(){
     gol = false;
@@ -299,13 +301,30 @@ function toRad(grados) {
 }
 
 function evaluarBordes(){
-    // Gol
-    if(pos_bola.x <= 0 + radio_bola || pos_bola.x >= width - radio_bola){
+    // Gol izquierda
+    if(pos_bola.x <= 0 + radio_bola){
         //start();
         //pos_bola(width/2, height/2);
         //setTimeout(update, 5000)
         dir_bola = new Vector(0, 0);
         gol = true;
+        cont1++;
+        //setTimeout(moverBola, 2000);
+        //setTimeout(reset, 2000);
+        //gol = false;
+        console.log(gol);
+        setTimeout(draw, 3000);
+        setTimeout(moverBola, 3000);
+        reset();
+    }
+    // Gol derecha
+    if(pos_bola.x >= width - radio_bola){
+        //start();
+        //pos_bola(width/2, height/2);
+        //setTimeout(update, 5000)
+        dir_bola = new Vector(0, 0);
+        gol = true;
+        cont2++;
         //setTimeout(moverBola, 2000);
         //setTimeout(reset, 2000);
         //gol = false;
