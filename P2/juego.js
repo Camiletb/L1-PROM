@@ -40,6 +40,60 @@ class Vector {
     }
 }
 
+class Bola{
+    constructor(posx, posy, speed){
+        this._x = posx;
+        this._y = posy;
+        this._vel = speed;
+    }
+
+    get x() {
+        return this._x;
+    }
+    get y() {
+        return this._y;
+    }
+    get speed() {
+        return this._vel;
+    }
+
+    mover() {
+        this._x = this._x + _vel.x;
+        this._y = this._y + _vel.y;
+    }
+    
+}
+class Pala{
+    constructor(posx, posy, tam, img){
+        this._x = posx;
+        this._y = posy;
+        this._tam = tam;
+        this._img = img;
+    }
+
+    get x() {
+        return this._x;
+    }
+    get y() {
+        return this._y;
+    }
+    get tam() {
+        return this._tam;
+    }
+
+    dibujar(ctx){
+        let imagen = new Image();
+        imagen.src = this._img;
+        let pattern = ctx.createPattern(imagen, "repeat-y");
+
+        ctx.beginPath();
+        ctx.fillStyle = pattern;
+        ctx.fillRect(this._x, this._y, 20, this._tam);
+        ctx.stroke();
+    }
+
+}
+
 // Lienzo
 var canvas;
 var ctx;
@@ -60,10 +114,10 @@ var pos_pala2;
 var centro_campo; // Centro
 
 // Imágenes
-var imgPala1;
-var patPala1;
-var imgPala2;
-var patPala2;
+var rutaPala1;
+var rutaPala2;
+var pala1;
+var pala2;
 
 // Bola
 var grad_bola;
@@ -97,6 +151,9 @@ function start(){
     //pos_pala2.copy(pos_ini_pala2);
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
+    pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
+    
+
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
@@ -124,12 +181,11 @@ function start(){
     }
 
     // Imágenes
-    imgPala1 = new Image();
-    imgPala1.src= "./pala1.png";
-    patPala1 = ctx.createPattern(imgPala1, "repeat");
-    imgPala2 = new Image();
-    imgPala2.src= "./pala2.png";
-    patPala2 = ctx.createPattern(imgPala2, "repeat");
+    
+
+    //rutaPala2 = new Image();
+    //rutaPala2.src= "./pala2.png";
+    //patPala2 = ctx.createPattern(rutaPala2, "repeat");
     
     
     setInterval(update, 10);
@@ -178,11 +234,8 @@ function draw() {
     ctx.stroke();
 
     // Pala 1
-    ctx.beginPath();
-    //ct_x.fillStyle = patPala1;
-    ctx.fillRect(pos_pala1.x, pos_pala1.y, 20, largo_pala);
-    //ct_x.fill();
-    ctx.stroke();
+    ////pala1.dibujar(ctx);
+    
 
     // Pala 2
     ctx.beginPath();
