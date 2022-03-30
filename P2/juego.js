@@ -129,7 +129,7 @@ var salida_bola;
 
 // Auxiliares
 var cont = 0;
-
+var gol = false;
 window.onload = start();
 function start(){
     // Lienzo
@@ -146,39 +146,26 @@ function start(){
 
     // Posiciones
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
-    pos_ini_pala2 = new Vector(width, height/2 - largo_pala/2);
+    pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
     //pos_pala1.copy(pos_ini_pala1);
     //pos_pala2.copy(pos_ini_pala2);
+    rutaPala1 = '/P2/pala2.png';
+    rutaPala2 = '/P2/pala2.png';
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
+    pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2);
     
 
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
-    pos_bola = new Vector(centro_campo.x, centro_campo.y);
-    dir_bola = new Vector(0, 0);
-    console.log(pos_bola.x);
-    console.log(pos_bola.y);
+    reset();
+    //console.log(pos_bola.x);
+    //console.log(pos_bola.y);
     deltaX = 10;
     deltaY = 10;
-    salida_bola = (Math.floor(Math.random()*10)%4);
-    switch(salida_bola) {
-        case 0:
-            dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
-            break;
-        case 1:
-            dir_bola = new Vector(Math.cos(toRad(125)), Math.sin(toRad(125)));
-            break;
-        case 2:
-            dir_bola = new Vector(Math.cos(toRad(235)), Math.sin(toRad(235)));
-            break;
-        case 3:
-        default:
-            dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
-            break;
-    }
+    
 
     // Imágenes
     
@@ -186,9 +173,11 @@ function start(){
     //rutaPala2 = new Image();
     //rutaPala2.src= "./pala2.png";
     //patPala2 = ctx.createPattern(rutaPala2, "repeat");
+    console.log("Antes: " + gol);
     
-    
+    console.log("Es gol?");
     setInterval(update, 10);
+    
 }
 
 function draw() {
@@ -223,8 +212,6 @@ function draw() {
     ctx.beginPath();
     ctx.setLineDash([]);
     ctx.strokeStyle = "indigo";
-    console.log(pos_bola.x);
-    console.log(pos_bola.y);
     grad_bola = ctx.createRadialGradient(pos_bola.x, pos_bola.y, radio_bola, pos_bola.x, pos_bola.y, radio_bola/5);
     grad_bola.addColorStop(0, "indigo");
     grad_bola.addColorStop(1, "mediumvioletred");
@@ -234,25 +221,74 @@ function draw() {
     ctx.stroke();
 
     // Pala 1
-    ////pala1.dibujar(ctx);
+    pala1.dibujar(ctx);
     
 
     // Pala 2
-    ctx.beginPath();
+    pala2.dibujar(ctx);
+    //ctx.beginPath();
     //ct_x.fillStyle = patPala2;
-    ctx.fillRect(pos_pala2.x - 20, pos_pala2.y, 20, largo_pala);
+    //ctx.fillRect(pos_pala2.x - 20, pos_pala2.y, 20, largo_pala);
     //ct_x.fill();
-    ctx.stroke();
+    //ctx.stroke();
 }
 function update() {
-    moverBola();
-    draw();
+    
+    //if(gol == true){
+    //    console.log("Dentro: " + gol);
+    //    parar();
+        //setTimeout(update, 5000);
+    //    gol = false; 
+        
+        //setTimeout(draw, 5000);
+    //    setTimeout(reset, 3000);
+    //}
+    //else{
+    
+    if(gol == false){
+        evaluarBordes();
+        moverBola();
+        draw();
+        console.log("No");
+        
+    }else{
+        //setTimeout(evaluarBordes, 3000);
+        //setTimeout(moverBola, 3000);
+        setTimeout(draw, 3000);
+        setTimeout(click, 3000);
+        console.log("Sí");
+    }
+    //}
     cont++;
-    console.log(cont);
+}
+function click(){
+    gol = false;
+}
+function reset(){
+    //pos_bola = new Vector(width/2, height/2);
+
+    pos_bola = new Vector(centro_campo.x, centro_campo.y);
+    dir_bola = new Vector(0, 0);
+    salida_bola = (Math.floor(Math.random()*10)%4);
+    switch(salida_bola) {
+        case 0:
+            dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
+            break;
+        case 1:
+            dir_bola = new Vector(Math.cos(toRad(125)), Math.sin(toRad(125)));
+            break;
+        case 2:
+            dir_bola = new Vector(Math.cos(toRad(235)), Math.sin(toRad(235)));
+            break;
+        case 3:
+        default:
+            dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
+            break;
+    }
 }
 
 function moverBola() {
-    evaluarBordes();
+    
     // pos_bola.add(new Vector(deltaX, deltaY));
     pos_bola.add(dir_bola);
     
@@ -265,17 +301,25 @@ function toRad(grados) {
 function evaluarBordes(){
     // Gol
     if(pos_bola.x <= 0 + radio_bola || pos_bola.x >= width - radio_bola){
-        start();
-        console.log("a");
+        //start();
+        //pos_bola(width/2, height/2);
+        //setTimeout(update, 5000)
+        dir_bola = new Vector(0, 0);
+        gol = true;
+        //setTimeout(moverBola, 2000);
+        //setTimeout(reset, 2000);
+        //gol = false;
+        console.log(gol);
+        setTimeout(draw, 3000);
+        setTimeout(moverBola, 3000);
+        reset();
     }
     // Rebote
     if(pos_bola.y <= 0 + radio_bola){
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     } else 
     if(pos_bola.y > height - 2*radio_bola){
-        // dir_bola.y *= -1;
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
-        console.log("b");
 
     }
 }
