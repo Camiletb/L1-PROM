@@ -153,8 +153,8 @@ function start(){
     pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
     //pos_pala1.copy(pos_ini_pala1);
     //pos_pala2.copy(pos_ini_pala2);
-    rutaPala1 = '/P2/pala2.png';
-    rutaPala2 = '/P2/pala2.png';
+    rutaPala1 = './pala2.png';
+    rutaPala2 = './pala2.png';
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
@@ -164,6 +164,8 @@ function start(){
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
+
+    console.log("Marcador");
     reset();
     //console.log(pos_bola.x);
     //console.log(pos_bola.y);
@@ -178,7 +180,6 @@ function start(){
     //rutaPala2.src= "./pala2.png";
     //patPala2 = ctx.createPattern(rutaPala2, "repeat");
     
-    console.log("Marcador");
     setInterval(update, 10);
     
 }
@@ -261,7 +262,6 @@ function update() {
     }
     //}
     cont++;
-    console.log("J1: " + cont1 + " - " + cont2 + " :J2")
 }
 function click(){
     gol = false;
@@ -287,6 +287,8 @@ function reset(){
             dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
             break;
     }
+
+    console.log("J1: " + cont1 + " - " + cont2 + " :J2");
 }
 
 function moverBola() {
@@ -303,32 +305,18 @@ function toRad(grados) {
 function evaluarBordes(){
     // Gol izquierda
     if(pos_bola.x <= 0 + radio_bola){
-        //start();
-        //pos_bola(width/2, height/2);
-        //setTimeout(update, 5000)
         dir_bola = new Vector(0, 0);
         gol = true;
         cont1++;
-        //setTimeout(moverBola, 2000);
-        //setTimeout(reset, 2000);
-        //gol = false;
-        console.log(gol);
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
         reset();
     }
     // Gol derecha
     if(pos_bola.x >= width - radio_bola){
-        //start();
-        //pos_bola(width/2, height/2);
-        //setTimeout(update, 5000)
         dir_bola = new Vector(0, 0);
         gol = true;
         cont2++;
-        //setTimeout(moverBola, 2000);
-        //setTimeout(reset, 2000);
-        //gol = false;
-        console.log(gol);
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
         reset();
