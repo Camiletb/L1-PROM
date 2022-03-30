@@ -151,10 +151,10 @@ function start(){
     // Posiciones
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
     pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
-    //pos_pala1.copy(pos_ini_pala1);
-    //pos_pala2.copy(pos_ini_pala2);
-    rutaPala1 = './pala2.png';
+    
+    rutaPala1 = './pala1.png';
     rutaPala2 = './pala2.png';
+
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
@@ -226,28 +226,10 @@ function draw() {
 
     // Pala 1
     pala1.dibujar(ctx);
-    
-
     // Pala 2
     pala2.dibujar(ctx);
-    //ctx.beginPath();
-    //ct_x.fillStyle = patPala2;
-    //ctx.fillRect(pos_pala2.x - 20, pos_pala2.y, 20, largo_pala);
-    //ct_x.fill();
-    //ctx.stroke();
 }
 function update() {
-    
-    //if(gol == true){
-    //    console.log("Dentro: " + gol);
-    //    parar();
-        //setTimeout(update, 5000);
-    //    gol = false; 
-        
-        //setTimeout(draw, 5000);
-    //    setTimeout(reset, 3000);
-    //}
-    //else{
     
     if(gol == false){
         evaluarBordes();
@@ -255,12 +237,9 @@ function update() {
         draw();
         
     }else{
-        //setTimeout(evaluarBordes, 3000);
-        //setTimeout(moverBola, 3000);
         setTimeout(draw, 3000);
         setTimeout(click, 3000);
     }
-    //}
     cont++;
 }
 function click(){
@@ -304,7 +283,7 @@ function toRad(grados) {
 
 function evaluarBordes(){
     // Gol izquierda
-    if(pos_bola.x <= 0 + radio_bola){
+    if(pos_bola.x <= 0){
         dir_bola = new Vector(0, 0);
         gol = true;
         cont1++;
@@ -313,7 +292,7 @@ function evaluarBordes(){
         reset();
     }
     // Gol derecha
-    if(pos_bola.x >= width - radio_bola){
+    if(pos_bola.x >= width){
         dir_bola = new Vector(0, 0);
         gol = true;
         cont2++;
@@ -329,4 +308,7 @@ function evaluarBordes(){
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
 
     }
+
+    // Si la bola toca la pala, entonces rebota. Si está dentro de su y, y coincide la x
+    //if(pos_bola.y == pala1.y)
 }
