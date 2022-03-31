@@ -64,11 +64,13 @@ class Bola{
     
 }
 class Pala{
-    constructor(posx, posy, tam, img){
+    constructor(posx, posy, tam, img, quepala){
         this._x = posx;
         this._y = posy;
         this._tam = tam;
         this._img = img;
+        this._quepala = quepala;
+
     }
 
     get x() {
@@ -90,13 +92,13 @@ class Pala{
         //ctx.fillStyle = pattern;
         //ctx.fillRect(this._x, this._y, 20, this._tam);
         //ctx.stroke();
-        quepala++;
+        //quepala++;
 
         let imagen = new Image();
-        if(quepala%2 == 0){
-            imagen.src = this.rutaPala1;
+        if(this._quepala == 1){
+            imagen.src = rutaPala1;
         }else{
-            imagen.src = this.rutaPala2;
+            imagen.src = rutaPala2;
         }
 
 
@@ -149,7 +151,6 @@ var cont = 0;
 var cont1 = 0;
 var cont2 = 0;
 var gol = false;
-var quepala = 0;
 
 
 window.onload = start();
@@ -170,8 +171,8 @@ function start(){
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
     pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
     
-    pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
-    pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2);
+    pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1, 1);
+    pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2, 2);
 
     
 
@@ -331,7 +332,7 @@ function evaluarBordes(){
     if(pos_bola.y <= 0 + radio_bola){
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     } else 
-    if(pos_bola.y > height - 2*radio_bola){
+    if(pos_bola.y > height - radio_bola){
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
 
     }
