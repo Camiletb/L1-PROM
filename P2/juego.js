@@ -81,15 +81,32 @@ class Pala{
         return this._tam;
     }
 
-    dibujar(ctx){
+    dibujar(){
+        //let imagen = new Image();
+        //imagen.src = this._img;
+        //let pattern = ctx.createPattern(imagen, "repeat-y");
+
+        //ctx.beginPath();
+        //ctx.fillStyle = pattern;
+        //ctx.fillRect(this._x, this._y, 20, this._tam);
+        //ctx.stroke();
+        quepala++;
+
         let imagen = new Image();
-        imagen.src = this._img;
-        let pattern = ctx.createPattern(imagen, "repeat-y");
+        if(quepala%2 == 0){
+            imagen.src = this.rutaPala1;
+        }else{
+            imagen.src = this.rutaPala2;
+        }
+
+
+        var pat = ctx.createPattern(imagen, "repeat");
 
         ctx.beginPath();
-        ctx.fillStyle = pattern;
-        ctx.fillRect(this._x, this._y, 20, this._tam);
+        ctx.fillStyle = pat;
+        ctx.fillRect(this.x, this.y, 20, this.tam);
         ctx.stroke();
+
     }
 
 }
@@ -114,8 +131,8 @@ var pos_pala2;
 var centro_campo; // Centro
 
 // Imágenes
-var rutaPala1;
-var rutaPala2;
+var rutaPala1 = './pala1.png';
+var rutaPala2 = './pala2.png';
 var pala1;
 var pala2;
 
@@ -132,6 +149,7 @@ var cont = 0;
 var cont1 = 0;
 var cont2 = 0;
 var gol = false;
+var quepala = 0;
 
 
 window.onload = start();
@@ -152,13 +170,9 @@ function start(){
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
     pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
     
-    rutaPala1 = './pala1.png';
-    rutaPala2 = './pala2.png';
-
-    pos_pala1 = pos_ini_pala1;
-    pos_pala2 = pos_ini_pala2;
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1);
     pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2);
+
     
 
     centro_campo = new Vector(width/2, height/2); // Centro
@@ -191,7 +205,8 @@ function draw() {
     ctx.beginPath();
     ctx.fillStyle = "darkseagreen";
     ctx.strokeStyle = "darkseagreen";
-    ctx.rect(0, 0, width, height);
+    ctx.fillRect(0, 0, width, height);
+    ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
@@ -224,10 +239,19 @@ function draw() {
     ctx.fill();
     ctx.stroke();
 
+    
     // Pala 1
-    pala1.dibujar(ctx);
+    pala1.dibujar();
     // Pala 2
-    pala2.dibujar(ctx);
+    pala2.dibujar();
+    //let imagen = new Image();
+    //imagen.src = this.rutaPala2;
+    //var pat = ctx.createPattern(imagen, "repeat");
+
+    //ctx.beginPath();
+    //ctx.fillStyle = pat;
+    //ctx.fillRect(pos_pala2.x, pos_pala2.y, 20, 100);
+    //ctx.stroke();
 }
 function update() {
     
@@ -248,6 +272,9 @@ function click(){
 function reset(){
     //pos_bola = new Vector(width/2, height/2);
 
+    pos_pala1 = pos_ini_pala1;
+    pos_pala2 = pos_ini_pala2;
+    
     pos_bola = new Vector(centro_campo.x, centro_campo.y);
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random()*10)%4);
