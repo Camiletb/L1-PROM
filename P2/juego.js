@@ -66,6 +66,7 @@ class Bola {
     }
     
 }
+
 class Pala {
     constructor(posx, posy, tam, img, quepala) {
         this._x = posx;
@@ -117,6 +118,18 @@ class Pala {
     }
 }
 
+// Formulario
+var formBoton = document.getElementById("submit");
+var formJ1 = document.getElementById("inputJ1");
+var formJ2 = document.getElementById("inputJ2");
+var formTam = document.getElementById("inputTamPala");
+var formVel = document.getElementById("inputVelBola");
+var formVol = document.getElementById("inputVol");
+
+// Jugadores
+var nombreJ1;
+var nombreJ2;
+
 // Lienzo
 var canvas;
 var ctx;
@@ -149,6 +162,7 @@ var deltaX; //incremento
 var deltaY;
 var dir_bola;
 var salida_bola;
+var vel_bola;
 
 // Auxiliares
 var cont = 0;
@@ -158,7 +172,15 @@ var gol = false;
 
 
 window.onload = start();
+
 function start() {
+    // Eventos
+    formBoton.addEventListener("click", updateData);
+
+    // Jugadores
+    nombreJ1 = "J1";
+    nombreJ2 = "J2";
+
     // Lienzo
     canvas = document.getElementById("campo");
     ctx = canvas.getContext("2d");
@@ -194,9 +216,8 @@ function start() {
     //rutaPala2 = new Image();
     //rutaPala2.src= "./pala2.png";
     //patPala2 = ctx.createPattern(rutaPala2, "repeat");
-    
+
     setInterval(update, 10);
-    
 }
 
 function draw() {
@@ -214,8 +235,8 @@ function draw() {
     ctx.setLineDash(line_dash);
     ctx.lineCap = "round";
     ctx.strokeStyle = "white";
-    ctx.moveTo((width/2), 0);
-    ctx.lineTo((width/2), height);
+    ctx.moveTo((width / 2), 0);
+    ctx.lineTo((width / 2), height);
     ctx.stroke();
 
     // Círculo discontinuo
@@ -234,7 +255,7 @@ function draw() {
     grad_bola.addColorStop(0, "indigo");
     grad_bola.addColorStop(1, "mediumvioletred");
     ctx.fillStyle = grad_bola;
-    ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2*Math.PI);
+    ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
 
@@ -281,7 +302,7 @@ function reset() {
     pos_bola = new Vector(centro_campo.x, centro_campo.y);
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random()*10)%4);
-    
+
     switch(salida_bola) {
         case 0:
             dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
@@ -298,7 +319,7 @@ function reset() {
             break;
     }
 
-    console.log("J1: " + cont1 + " - " + cont2 + " :J2");
+    console.log(nombreJ1 + ": " + cont1 + " - " + cont2 + " :" + nombreJ2);
 }
 
 function moverBola() {
@@ -344,4 +365,16 @@ function evaluarBordes() {
 
     // Si la bola toca la pala, entonces rebota. Si está dentro de su y, y coincide la x
     //if(pos_bola.y == pala1.y)
+}
+
+function updateData() {
+    // Nombres
+    nombreJ1 = formJ1.value || nombreJ1;
+    nombreJ2 = formJ2.value || nombreJ2;
+
+    // Tamaño pala
+    largo_pala = formTam.value || largo_pala;
+
+    // Velocidad bola
+    vel_bola = formVel.value || vel_bola;
 }
