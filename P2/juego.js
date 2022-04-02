@@ -373,7 +373,8 @@ function updateData() {
     nombreJ2 = formJ2.value || nombreJ2;
 
     // Tamaño pala
-    largo_pala = formTam.value || largo_pala;
+    pala1._tam = formTam.value || pala1._tam;
+    pala2._tam = formTam.value || pala2._tam;
 
     // Velocidad bola
     vel_bola = formVel.value || vel_bola;
