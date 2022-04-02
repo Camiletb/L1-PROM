@@ -1,12 +1,12 @@
 class Vector {
 
-    constructor(x, y){
+    constructor(x, y) {
         this._x = x;
         this._y = y;
     }
 
     normalize() {
-        let norma = Math.sqrt(Math.pow(_x, 2) + Math.pow(_y, 2)); //módulo
+        let norma = Math.sqrt(Math.pow(_x, 2) + Math.pow(_y, 2)); // módulo
         _x /= norma;
         _y /= norma; 
     }
@@ -21,27 +21,28 @@ class Vector {
         this._y -= v.y;
     }
 
-    mult(n){
+    mult(n) {
         _x *= n;
         _y *= n;
     }
 
-    copy(v){
+    copy(v) {
         this._x = v.x;
         this._y = v.y;
     }
 
     // Setters _y Getters
-    get x(){
+    get x() {
         return this._x;
     }
-    get y(){
+
+    get y() {
         return this._y;
     }
 }
 
-class Bola{
-    constructor(posx, posy, speed){
+class Bola {
+    constructor(posx, posy, speed) {
         this._x = posx;
         this._y = posy;
         this._vel = speed;
@@ -50,9 +51,11 @@ class Bola{
     get x() {
         return this._x;
     }
+
     get y() {
         return this._y;
     }
+
     get speed() {
         return this._vel;
     }
@@ -63,8 +66,8 @@ class Bola{
     }
     
 }
-class Pala{
-    constructor(posx, posy, tam, img, quepala){
+class Pala {
+    constructor(posx, posy, tam, img, quepala) {
         this._x = posx;
         this._y = posy;
         this._tam = tam;
@@ -76,14 +79,16 @@ class Pala{
     get x() {
         return this._x;
     }
+
     get y() {
         return this._y;
     }
+
     get tam() {
         return this._tam;
     }
 
-    dibujar(){
+    dibujar() {
         //let imagen = new Image();
         //imagen.src = this._img;
         //let pattern = ctx.createPattern(imagen, "repeat-y");
@@ -95,9 +100,10 @@ class Pala{
         //quepala++;
 
         let imagen = new Image();
-        if(this._quepala == 1){
+        if (this._quepala == 1) {
             imagen.src = rutaPala1;
-        }else{
+        } 
+        else {
             imagen.src = rutaPala2;
         }
 
@@ -108,9 +114,7 @@ class Pala{
         ctx.fillStyle = pat;
         ctx.fillRect(this.x, this.y, 20, this.tam);
         ctx.stroke();
-
     }
-
 }
 
 // Lienzo
@@ -154,7 +158,7 @@ var gol = false;
 
 
 window.onload = start();
-function start(){
+function start() {
     // Lienzo
     canvas = document.getElementById("campo");
     ctx = canvas.getContext("2d");
@@ -174,8 +178,6 @@ function start(){
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1, 1);
     pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2, 2);
 
-    
-
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
@@ -189,8 +191,6 @@ function start(){
     
 
     // Imágenes
-    
-
     //rutaPala2 = new Image();
     //rutaPala2.src= "./pala2.png";
     //patPala2 = ctx.createPattern(rutaPala2, "repeat");
@@ -200,8 +200,6 @@ function start(){
 }
 
 function draw() {
-
-
     // Fondo
     ctx.beginPath();
     ctx.fillStyle = "darkseagreen";
@@ -254,23 +252,27 @@ function draw() {
     //ctx.fillRect(pos_pala2.x, pos_pala2.y, 20, 100);
     //ctx.stroke();
 }
+
 function update() {
-    
-    if(gol == false){
+    if(gol == false) {
         evaluarBordes();
         moverBola();
         draw();
         
-    }else{
+    }
+    else {
         setTimeout(draw, 3000);
         setTimeout(click, 3000);
     }
+
     cont++;
 }
-function click(){
+
+function click() {
     gol = false;
 }
-function reset(){
+
+function reset() {
     //pos_bola = new Vector(width/2, height/2);
 
     pos_pala1 = pos_ini_pala1;
@@ -279,6 +281,7 @@ function reset(){
     pos_bola = new Vector(centro_campo.x, centro_campo.y);
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random()*10)%4);
+    
     switch(salida_bola) {
         case 0:
             dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
@@ -309,9 +312,9 @@ function toRad(grados) {
     return (grados * 2 * Math.PI / 360);
 }
 
-function evaluarBordes(){
+function evaluarBordes() {
     // Gol izquierda
-    if(pos_bola.x <= 0){
+    if (pos_bola.x <= 0) {
         dir_bola = new Vector(0, 0);
         gol = true;
         cont1++;
@@ -319,8 +322,9 @@ function evaluarBordes(){
         setTimeout(moverBola, 3000);
         reset();
     }
+
     // Gol derecha
-    if(pos_bola.x >= width){
+    if (pos_bola.x >= width) {
         dir_bola = new Vector(0, 0);
         gol = true;
         cont2++;
@@ -328,11 +332,12 @@ function evaluarBordes(){
         setTimeout(moverBola, 3000);
         reset();
     }
+
     // Rebote
-    if(pos_bola.y <= 0 + radio_bola){
+    if (pos_bola.y <= 0 + radio_bola) {
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
-    } else 
-    if(pos_bola.y > height - radio_bola){
+    } 
+    else if (pos_bola.y > height - radio_bola) {
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
 
     }
