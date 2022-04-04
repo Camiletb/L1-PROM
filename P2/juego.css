@@ -8,7 +8,8 @@
 }
 #panel{
     min-width: 18vw;
-    height: 48vh;
+    min-height: 55vh;
+    /* height: 48vh; */
     border-radius: 3px;
     /* box-shadow:1px 1px #292b2c; */
 }
