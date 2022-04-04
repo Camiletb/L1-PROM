@@ -95,10 +95,12 @@ class Bola {
 }
 
 class Pala {
-    constructor (posx, posy, tam, img, quepala) {
-        this._x = posx;
-        this._y = posy;
+    constructor (posx, tam, img, quepala) {
         this._tam = tam;
+        this._x = posx;
+        this._y = centro_campo.y - (this._tam/2);
+        this._posini = new Vector(this._x, this._y);
+        this._width = 20;
         this._img = img;
         this._quepala = quepala;
 
@@ -113,8 +115,21 @@ class Pala {
         return this._y;
     }
 
+    get posini() {
+        return this._posini;
+    }
+
+    get w() {   // width
+        return this._width;
+    }
+
     get tam() {
         return this._tam;
+    }
+
+
+    set tam(tam) {
+        this._tam = tam;
     }
 
     // Funciones
@@ -134,6 +149,19 @@ class Pala {
         ctx.fillRect(this._x, this._y, 20, this._tam);
         ctx.stroke();
     }
+
+    /* mover(){
+        if (this._quepala == 1) {
+            if (this._y + this._tam < canvas.height) {
+                this._y += vel_pala;
+            }
+        }
+        else {
+            if (this._y > 0) {
+                this._y -= vel_pala;
+            }
+        }
+    } */
 }
 
 // Formulario
@@ -191,7 +219,7 @@ window.onload = start();
 
 function start() {
     // Eventos
-    formBoton.addEventListener("click", updateData);
+    formBoton.addEventListener("click", function(){updateData(); resetPos();});
 
     // Jugadores
     nombreJ1 = formJ1.value;
@@ -209,15 +237,15 @@ function start() {
     width = canvas.width;
     height = canvas.height;
 
+    // Centro
+    centro_campo = new Vector(width/2, height/2); 
+
     // Posiciones
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
     pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
     
-    pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1, 1);
-    pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2, 2);
-
-    // Centro
-    centro_campo = new Vector(width/2, height/2); 
+    pala1 = new Pala(pos_ini_pala1.x, largo_pala, rutaPala1, 1);
+    pala2 = new Pala(pos_ini_pala2.x, largo_pala, rutaPala2, 2);
 
     // Bola
     console.log("Marcador");
@@ -358,7 +386,26 @@ function evaluarBordes() {
     }
 
     // Rebote con palas
-    //if (pos_bola)
+    if(bola.x <=width/2){
+        if(bola.x - radio_bola <= pala1.x + pala1.w){
+            console.log("Coincide la x");
+            if(bola.y >= pala1.y && bola.y <= pala1.y + pala1.tam){
+                console.log("Colision pala1");
+                dir_bola = new Vector(-dir_bola.x, dir_bola.y);
+                console.log("Rebote");
+            }
+        }
+    }
+    else{
+        if(bola.x + radio_bola >= pala2.x){
+            console.log("Coincide la x");
+            if(bola.y >= pala2.y && bola.y <= pala2.y + pala2.tam){
+                console.log("Colision pala2");
+                dir_bola = new Vector(-dir_bola.x, dir_bola.y);
+                console.log("Rebote");
+            }
+        }
+    }
 
     // Si la bola toca la pala, entonces rebota. Si está dentro de su y, y coincide la x
     //if(pos_bola.y == pala1.y)
