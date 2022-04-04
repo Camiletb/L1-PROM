@@ -103,6 +103,7 @@ class Pala {
         this._width = 20;
         this._img = img;
         this._quepala = quepala;
+        this._speedpala = 3;
 
     }
 
@@ -153,7 +154,7 @@ class Pala {
     mover(deltaY) {
         console.log(deltaY);
         console.log(this._y);
-        this._y += deltaY * 3;
+        this._y += deltaY * this._speedpala;
         this.dibujar();
         console.log(this._y);
     }
@@ -210,7 +211,7 @@ var cont1 = 0;
 var cont2 = 0;
 var gol = false;
 
-window.addEventListener("keydown", keyHandler);
+window.addEventListener("keydown", keyHandlerDown);
 window.onload = start();
 
 function start() {
@@ -424,21 +425,23 @@ function updateData() {
     // Velocidad bola
     vel_bola = formVel.value || vel_bola;
 }
-function keyHandler(e){
+var refresco1;
+var refresco2;
+function keyHandlerDown(e){
     let code = e.keyCode;
     switch(code){
         //J1
         case 87: //Arriba
             pala1.mover(-1);
             break;
-        case 83: //Abajo
+            case 83: //Abajo
             pala1.mover(1);
             break;
-        //J2
-        case 38: //Arriba
+            //J2
+            case 38: //Arriba
             pala2.mover(-1);
             break;
-        case 40: //Abajo
+            case 40: //Abajo
             pala2.mover(1);
             break;
     }
