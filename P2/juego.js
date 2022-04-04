@@ -150,18 +150,13 @@ class Pala {
         ctx.stroke();
     }
 
-    /* mover(){
-        if (this._quepala == 1) {
-            if (this._y + this._tam < canvas.height) {
-                this._y += vel_pala;
-            }
-        }
-        else {
-            if (this._y > 0) {
-                this._y -= vel_pala;
-            }
-        }
-    } */
+    mover(deltaY) {
+        console.log(deltaY);
+        console.log(this._y);
+        this._y += deltaY * 3;
+        this.dibujar();
+        console.log(this._y);
+    }
 }
 
 // Formulario
@@ -215,6 +210,7 @@ var cont1 = 0;
 var cont2 = 0;
 var gol = false;
 
+window.addEventListener("keydown", keyHandler);
 window.onload = start();
 
 function start() {
@@ -286,6 +282,11 @@ function draw() {
 
     // Marcador
     ctx.beginPath();
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText("Best of 5!", width/2, 65); // goles J1
+    ctx.stroke();
     ctx.font = "50px Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "left";
@@ -422,4 +423,23 @@ function updateData() {
 
     // Velocidad bola
     vel_bola = formVel.value || vel_bola;
+}
+function keyHandler(e){
+    let code = e.keyCode;
+    switch(code){
+        //J1
+        case 87: //Arriba
+            pala1.mover(-1);
+            break;
+        case 83: //Abajo
+            pala1.mover(1);
+            break;
+        //J2
+        case 38: //Arriba
+            pala2.mover(-1);
+            break;
+        case 40: //Abajo
+            pala2.mover(1);
+            break;
+    }
 }
