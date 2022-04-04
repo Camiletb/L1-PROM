@@ -264,6 +264,21 @@ function draw() {
     ctx.arc(centro_campo.x, centro_campo.y, radio_centro, 0, 2 * Math.PI);
     ctx.stroke();
 
+    // Marcador
+    ctx.beginPath();
+    ctx.font = "50px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "left";
+    ctx.fillText(cont1, 35, 65); // goles J1
+    ctx.fillStyle = "black";
+    ctx.textAlign = "right";
+    ctx.fillText(cont2, width - 35, 65); // goles J2
+
+
+    // ctx.fillText(cont1 + " - " + cont2, width/2, 25);
+    // ctx.fillText(cont2, width/2 + 20, 30);
+    ctx.stroke();
+
     // Bola
     bola.dibujar();
 
@@ -336,8 +351,6 @@ function resetPos() {
             dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
             break;
     }
-
-    console.log(nombreJ1 + ": " + cont1 + " - " + cont2 + " :" + nombreJ2);
 }
 
 function moverBola() {
