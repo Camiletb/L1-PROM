@@ -65,6 +65,12 @@ class Bola {
         return this._vel;
     }
 
+    setPos(v) {
+        this._pos = v;
+        this._x = this._pos.x;
+        this._y = this._pos.y;
+    }
+
     mover() {
         this._pos.add(dir_bola);
         this._x = this._pos.x;
@@ -259,7 +265,6 @@ function draw() {
     ctx.stroke();
 
     // Bola
-    console.log(bola.x + " " + bola.y);
     bola.dibujar();
 
     // ctx.beginPath();
@@ -289,10 +294,9 @@ function draw() {
 }
 
 function update() {
-    if(gol == false) {
+    if (gol == false) {
         evaluarBordes();
         bola.mover();
-        // moverBola();
         draw();
     }
     else {
@@ -313,7 +317,7 @@ function resetPos() {
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
     
-    pos_bola = new Vector(centro_campo.x, centro_campo.y);
+    bola.setPos(new Vector(centro_campo.x, centro_campo.y));
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random() * 10) % 4);
 
