@@ -1,3 +1,7 @@
+body{
+    background-color: #212529;
+}
+
 #campo {
     border: 2px solid black;
     /* height: 48vh; */
@@ -9,6 +13,7 @@
 #panel{
     min-width: 18vw;
     min-height: 55vh;
+    border:1px solid #cecece;
     /* height: 48vh; */
     border-radius: 3px;
     /* box-shadow:1px 1px #292b2c; */
