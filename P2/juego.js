@@ -45,6 +45,7 @@ class Bola {
     constructor(posx, posy, speed) {
         this._x = posx;
         this._y = posy;
+        this._pos = new Vector(this._x, this._y);
         this._vel = speed;
     }
 
@@ -56,15 +57,32 @@ class Bola {
         return this._y;
     }
 
+    get pos() {
+        return this._pos;
+    }
+
     get speed() {
         return this._vel;
     }
 
     mover() {
-        this._x = this._x + _vel.x;
-        this._y = this._y + _vel.y;
+        this._pos.add(dir_bola);
+        this._x = this._pos.x;
+        this._y = this._pos.y;
     }
     
+    dibujar() {
+        ctx.beginPath();
+        ctx.setLineDash([]);
+        ctx.strokeStyle = "indigo";
+        grad_bola = ctx.createRadialGradient(this._x, this._y, radio_bola, this._x, this._y, radio_bola/5);
+        grad_bola.addColorStop(0, "indigo");
+        grad_bola.addColorStop(1, "mediumvioletred");
+        ctx.fillStyle = grad_bola;
+        ctx.arc(this._x, this._y, radio_bola, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
 }
 
 class Pala {
@@ -113,7 +131,7 @@ class Pala {
 
         ctx.beginPath();
         ctx.fillStyle = pat;
-        ctx.fillRect(this.x, this.y, 20, this.tam);
+        ctx.fillRect(this._x, this._y, 20, this._tam);
         ctx.stroke();
     }
 }
@@ -156,6 +174,7 @@ var pala1;
 var pala2;
 
 // Bola
+var bola;
 var grad_bola;
 var pos_bola;
 var deltaX; //incremento
@@ -178,8 +197,8 @@ function start() {
     formBoton.addEventListener("click", updateData);
 
     // Jugadores
-    nombreJ1 = "J1";
-    nombreJ2 = "J2";
+    nombreJ1 = formJ1.value;
+    nombreJ2 = formJ2.value;
 
     // Lienzo
     canvas = document.getElementById("campo");
@@ -203,19 +222,11 @@ function start() {
     centro_campo = new Vector(width/2, height/2); // Centro
 
     // Bola
-
     console.log("Marcador");
-    reset();
-    //console.log(pos_bola.x);
-    //console.log(pos_bola.y);
+    bola = new Bola(width/2, height/2, vel_bola);
+    resetPos();
     deltaX = 10;
     deltaY = 10;
-    
-
-    // Imágenes
-    //rutaPala2 = new Image();
-    //rutaPala2.src= "./pala2.png";
-    //patPala2 = ctx.createPattern(rutaPala2, "repeat");
 
     setInterval(update, 10);
 }
@@ -248,16 +259,19 @@ function draw() {
     ctx.stroke();
 
     // Bola
-    ctx.beginPath();
-    ctx.setLineDash([]);
-    ctx.strokeStyle = "indigo";
-    grad_bola = ctx.createRadialGradient(pos_bola.x, pos_bola.y, radio_bola, pos_bola.x, pos_bola.y, radio_bola/5);
-    grad_bola.addColorStop(0, "indigo");
-    grad_bola.addColorStop(1, "mediumvioletred");
-    ctx.fillStyle = grad_bola;
-    ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2 * Math.PI);
-    ctx.fill();
-    ctx.stroke();
+    console.log(bola.x + " " + bola.y);
+    bola.dibujar();
+
+    // ctx.beginPath();
+    // ctx.setLineDash([]);
+    // ctx.strokeStyle = "indigo";
+    // grad_bola = ctx.createRadialGradient(pos_bola.x, pos_bola.y, radio_bola, pos_bola.x, pos_bola.y, radio_bola/5);
+    // grad_bola.addColorStop(0, "indigo");
+    // grad_bola.addColorStop(1, "mediumvioletred");
+    // ctx.fillStyle = grad_bola;
+    // ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2 * Math.PI);
+    // ctx.fill();
+    // ctx.stroke();
 
     
     // Pala 1
@@ -277,23 +291,23 @@ function draw() {
 function update() {
     if(gol == false) {
         evaluarBordes();
-        moverBola();
+        bola.mover();
+        // moverBola();
         draw();
-        
     }
     else {
         setTimeout(draw, 3000);
-        setTimeout(click, 3000);
+        setTimeout(resetGol, 3000);
     }
 
     cont++;
 }
 
-function click() {
+function resetGol() {
     gol = false;
 }
 
-function reset() {
+function resetPos() {
     //pos_bola = new Vector(width/2, height/2);
 
     pos_pala1 = pos_ini_pala1;
@@ -301,7 +315,7 @@ function reset() {
     
     pos_bola = new Vector(centro_campo.x, centro_campo.y);
     dir_bola = new Vector(0, 0);
-    salida_bola = (Math.floor(Math.random()*10)%4);
+    salida_bola = (Math.floor(Math.random() * 10) % 4);
 
     switch(salida_bola) {
         case 0:
@@ -335,33 +349,35 @@ function toRad(grados) {
 
 function evaluarBordes() {
     // Gol izquierda
-    if (pos_bola.x <= 0) {
+    if (bola.x <= 0) {
         dir_bola = new Vector(0, 0);
         gol = true;
         cont1++;
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
-        reset();
+        resetPos();
     }
 
     // Gol derecha
-    if (pos_bola.x >= width) {
+    if (bola.x >= width) {
         dir_bola = new Vector(0, 0);
         gol = true;
         cont2++;
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
-        reset();
+        resetPos();
     }
 
-    // Rebote
-    if (pos_bola.y <= 0 + radio_bola) {
+    // Rebote con paredes
+    if (bola.y <= 0 + radio_bola) {
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     } 
-    else if (pos_bola.y > height - radio_bola) {
+    else if (bola.y > height - radio_bola) {
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
-
     }
+
+    // Rebote con palas
+    //if (pos_bola)
 
     // Si la bola toca la pala, entonces rebota. Si está dentro de su y, y coincide la x
     //if(pos_bola.y == pala1.y)
