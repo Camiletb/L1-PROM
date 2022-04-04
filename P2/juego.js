@@ -5,6 +5,7 @@ class Vector {
         this._y = y;
     }
 
+    // Funciones
     normalize() {
         let norma = Math.sqrt(Math.pow(_x, 2) + Math.pow(_y, 2)); // módulo
         _x /= norma;
@@ -31,7 +32,7 @@ class Vector {
         this._y = v.y;
     }
 
-    // Setters _y Getters
+    // Getters
     get x() {
         return this._x;
     }
@@ -49,6 +50,7 @@ class Bola {
         this._vel = speed;
     }
 
+    // Getters
     get x() {
         return this._x;
     }
@@ -65,6 +67,7 @@ class Bola {
         return this._vel;
     }
 
+    // Funciones
     setPos(v) {
         this._pos = v;
         this._x = this._pos.x;
@@ -92,7 +95,7 @@ class Bola {
 }
 
 class Pala {
-    constructor(posx, posy, tam, img, quepala) {
+    constructor (posx, posy, tam, img, quepala) {
         this._x = posx;
         this._y = posy;
         this._tam = tam;
@@ -101,6 +104,7 @@ class Pala {
 
     }
 
+    // Getters
     get x() {
         return this._x;
     }
@@ -113,17 +117,8 @@ class Pala {
         return this._tam;
     }
 
+    // Funciones
     dibujar() {
-        //let imagen = new Image();
-        //imagen.src = this._img;
-        //let pattern = ctx.createPattern(imagen, "repeat-y");
-
-        //ctx.beginPath();
-        //ctx.fillStyle = pattern;
-        //ctx.fillRect(this._x, this._y, 20, this._tam);
-        //ctx.stroke();
-        //quepala++;
-
         let imagen = new Image();
         if (this._quepala == 1) {
             imagen.src = rutaPala1;
@@ -131,7 +126,6 @@ class Pala {
         else {
             imagen.src = rutaPala2;
         }
-
 
         var pat = ctx.createPattern(imagen, "repeat");
 
@@ -183,8 +177,6 @@ var pala2;
 var bola;
 var grad_bola;
 var pos_bola;
-var deltaX; //incremento
-var deltaY;
 var dir_bola;
 var salida_bola;
 var vel_bola;
@@ -194,7 +186,6 @@ var cont = 0;
 var cont1 = 0;
 var cont2 = 0;
 var gol = false;
-
 
 window.onload = start();
 
@@ -225,7 +216,8 @@ function start() {
     pala1 = new Pala(pos_ini_pala1.x, pos_ini_pala1.y, largo_pala, rutaPala1, 1);
     pala2 = new Pala(pos_ini_pala2.x, pos_ini_pala2.y, largo_pala, rutaPala2, 2);
 
-    centro_campo = new Vector(width/2, height/2); // Centro
+    // Centro
+    centro_campo = new Vector(width/2, height/2); 
 
     // Bola
     console.log("Marcador");
@@ -273,39 +265,16 @@ function draw() {
     ctx.fillStyle = "black";
     ctx.textAlign = "right";
     ctx.fillText(cont2, width - 35, 65); // goles J2
-
-
-    // ctx.fillText(cont1 + " - " + cont2, width/2, 25);
-    // ctx.fillText(cont2, width/2 + 20, 30);
     ctx.stroke();
 
     // Bola
     bola.dibujar();
-
-    // ctx.beginPath();
-    // ctx.setLineDash([]);
-    // ctx.strokeStyle = "indigo";
-    // grad_bola = ctx.createRadialGradient(pos_bola.x, pos_bola.y, radio_bola, pos_bola.x, pos_bola.y, radio_bola/5);
-    // grad_bola.addColorStop(0, "indigo");
-    // grad_bola.addColorStop(1, "mediumvioletred");
-    // ctx.fillStyle = grad_bola;
-    // ctx.arc(pos_bola.x, pos_bola.y, radio_bola, 0, 2 * Math.PI);
-    // ctx.fill();
-    // ctx.stroke();
-
     
     // Pala 1
     pala1.dibujar();
+
     // Pala 2
     pala2.dibujar();
-    //let imagen = new Image();
-    //imagen.src = this.rutaPala2;
-    //var pat = ctx.createPattern(imagen, "repeat");
-
-    //ctx.beginPath();
-    //ctx.fillStyle = pat;
-    //ctx.fillRect(pos_pala2.x, pos_pala2.y, 20, 100);
-    //ctx.stroke();
 }
 
 function update() {
@@ -327,8 +296,6 @@ function resetGol() {
 }
 
 function resetPos() {
-    //pos_bola = new Vector(width/2, height/2);
-
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
     
@@ -354,10 +321,7 @@ function resetPos() {
 }
 
 function moverBola() {
-    
-    // pos_bola.add(new Vector(deltaX, deltaY));
     pos_bola.add(dir_bola);
-    
 }
 
 function toRad(grados) {
