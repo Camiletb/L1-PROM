@@ -5,13 +5,25 @@ class Vector {
         this._y = y;
     }
 
-    // Funciones
-    normalize() {
-        let norma = Math.sqrt(Math.pow(_x, 2) + Math.pow(_y, 2)); // módulo
-        _x /= norma;
-        _y /= norma; 
+    // Getters
+    get x() {
+        return this._x;
     }
 
+    get y() {
+        return this._y;
+    }
+
+    // Funciones
+    normalize() {
+        let norma = Math.sqrt(Math.pow(this._x, 2) + Math.pow(this._y, 2)); // módulo
+        console.log("Norma: " + norma);
+        this._x /= norma;
+        this._y /= norma; 
+        console.log("Normax: " + this._x);
+        console.log("Normay: " + this._y);
+    }
+    
     add(v) {
         this._x += v.x;
         this._y += v.y;
@@ -30,16 +42,10 @@ class Vector {
     copy(v) {
         this._x = v.x;
         this._y = v.y;
+        console.log(v.x + ", " + v.y);
     }
 
-    // Getters
-    get x() {
-        return this._x;
-    }
-
-    get y() {
-        return this._y;
-    }
+    
 }
 
 class Bola {
@@ -205,7 +211,6 @@ var pala2;
 // Bola
 var bola;
 var grad_bola;
-var pos_bola;
 var dir_bola;
 var salida_bola;
 var vel_bola;
@@ -251,6 +256,8 @@ function start() {
 
     // Bola
     console.log("Marcador");
+    dir_bola = new Vector(0, 0);
+    console.log("1: " + dir_bola.x);
     bola = new Bola(width/2, height/2, vel_bola);
     resetPos();
     deltaX = 10;
@@ -333,30 +340,52 @@ function resetGol() {
 function resetPos() {
     pos_pala1 = pos_ini_pala1;
     pos_pala2 = pos_ini_pala2;
-    
+    console.log("2: " + dir_bola.x);
     bola.setPos(new Vector(centro_campo.x, centro_campo.y));
-    dir_bola = new Vector(0, 0);
+    //dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random() * 10) % 4);
 
     switch(salida_bola) {
         case 0:
-            dir_bola = new Vector(Math.cos(toRad(55)), Math.sin(toRad(55)));
+
+            dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+            dir_bola.normalize();
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 1:
-            dir_bola = new Vector(Math.cos(toRad(125)), Math.sin(toRad(125)));
+
+            dir_bola.copy(new Vector(Math.cos(toRad(125)), Math.sin(toRad(125))));
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+            dir_bola.normalize();
+
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 2:
-            dir_bola = new Vector(Math.cos(toRad(235)), Math.sin(toRad(235)));
+
+            dir_bola.copy(new Vector(Math.cos(toRad(235)), Math.sin(toRad(235))));
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+            dir_bola.normalize();
+
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+
             break;
         case 3:
         default:
-            dir_bola = new Vector(Math.cos(toRad(305)), Math.sin(toRad(305)));
+
+            dir_bola.copy(new Vector(Math.cos(toRad(305)), Math.sin(toRad(305))));
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+            dir_bola.normalize();
+
+            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
+
             break;
     }
+    console.log("3: " + dir_bola.x);
 }
 
 function moverBola() {
-    pos_bola.add(dir_bola);
+    bola.pos.add(dir_bola);
 }
 
 function toRad(grados) {
