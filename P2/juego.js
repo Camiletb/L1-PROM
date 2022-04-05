@@ -152,11 +152,16 @@ class Pala {
     }
 
     mover(deltaY) {
-        console.log(deltaY);
-        console.log(this._y);
-        this._y += deltaY * this._speedpala;
+        if(this._y >=5 && this._y <= height - this._tam - 5){
+
+            this._y += deltaY * this._speedpala;
+        }else if(this.y < 5){
+            this._y += 5;
+        }else{
+            this._y -=5;
+            
+        }
         this.dibujar();
-        console.log(this._y);
     }
 }
 
@@ -391,7 +396,7 @@ function evaluarBordes() {
     if(bola.x <=width/2){
         if(bola.x - radio_bola <= pala1.x + pala1.w){
             console.log("Coincide la x");
-            if(bola.y >= pala1.y && bola.y <= pala1.y + pala1.tam){
+            if(bola.y >= pala1.y - 5 && bola.y <= pala1.y + pala1.tam + 5){
                 console.log("Colision pala1");
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 console.log("Rebote");
@@ -401,7 +406,7 @@ function evaluarBordes() {
     else{
         if(bola.x + radio_bola >= pala2.x){
             console.log("Coincide la x");
-            if(bola.y >= pala2.y && bola.y <= pala2.y + pala2.tam){
+            if(bola.y >= pala2.y - 5 && bola.y <= pala2.y + pala2.tam + 5){
                 console.log("Colision pala2");
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 console.log("Rebote");
