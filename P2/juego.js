@@ -100,7 +100,7 @@ class Pala {
         this._x = posx;
         this._y = centro_campo.y - (this._tam/2);
         this._posini = new Vector(this._x, this._y);
-        this._width = 20;
+        this._width = 5;
         this._img = img;
         this._quepala = quepala;
         this._speedpala = 3;
@@ -147,7 +147,7 @@ class Pala {
 
         ctx.beginPath();
         ctx.fillStyle = pat;
-        ctx.fillRect(this._x, this._y, 20, this._tam);
+        ctx.fillRect(this._x, this._y, this._width, this._tam);
         ctx.stroke();
     }
 
@@ -239,7 +239,7 @@ function start() {
 
     // Posiciones
     pos_ini_pala1 = new Vector(0, height/2 - largo_pala/2);
-    pos_ini_pala2 = new Vector(width - 20, height/2 - largo_pala/2);
+    pos_ini_pala2 = new Vector(width - 5, height/2 - largo_pala/2);
     
     pala1 = new Pala(pos_ini_pala1.x, largo_pala, rutaPala1, 1);
     pala2 = new Pala(pos_ini_pala2.x, largo_pala, rutaPala2, 2);
