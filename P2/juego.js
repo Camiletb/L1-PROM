@@ -35,8 +35,8 @@ class Vector {
     }
 
     mult(n) {
-        _x *= n;
-        _y *= n;
+        this._x *= n;
+        this._y *= n;
     }
 
     copy(v) {
@@ -81,6 +81,7 @@ class Bola {
     }
 
     mover() {
+        
         this._pos.add(dir_bola);
         this._x = this._pos.x;
         this._y = this._pos.y;
@@ -257,6 +258,7 @@ function start() {
     // Bola
     console.log("Marcador");
     dir_bola = new Vector(0, 0);
+    //vel_bola = 1;
     console.log("1: " + dir_bola.x);
     bola = new Bola(width/2, height/2, vel_bola);
     resetPos();
@@ -349,24 +351,19 @@ function resetPos() {
         case 0:
 
             dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
-            dir_bola.normalize();
+            //dir_bola.normalize();
             console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 1:
 
             dir_bola.copy(new Vector(Math.cos(toRad(125)), Math.sin(toRad(125))));
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
-            dir_bola.normalize();
-
+            //dir_bola.normalize();
             console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 2:
 
             dir_bola.copy(new Vector(Math.cos(toRad(235)), Math.sin(toRad(235))));
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
-            dir_bola.normalize();
-
+            //dir_bola.normalize();
             console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
 
             break;
@@ -374,13 +371,12 @@ function resetPos() {
         default:
 
             dir_bola.copy(new Vector(Math.cos(toRad(305)), Math.sin(toRad(305))));
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
-            dir_bola.normalize();
-
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
-
+            //dir_bola.normalize();
+            
             break;
     }
+    console.log("vel: " + bola.speed);
+    dir_bola.mult(bola.speed);
     console.log("3: " + dir_bola.x);
 }
 
