@@ -258,7 +258,7 @@ function start() {
     // Bola
     console.log("Marcador");
     dir_bola = new Vector(0, 0);
-    //vel_bola = 1;
+    vel_bola = 1;
     console.log("1: " + dir_bola.x);
     bola = new Bola(width/2, height/2, vel_bola);
     resetPos();
