@@ -49,11 +49,11 @@ class Vector {
 }
 
 class Bola {
-    constructor(posx, posy, speed) {
+    constructor(posx, posy) {
         this._x = posx;
         this._y = posy;
         this._pos = new Vector(this._x, this._y);
-        this._vel = speed;
+        this._vel = vel_bola;
     }
 
     // Getters
@@ -78,6 +78,9 @@ class Bola {
         this._pos = v;
         this._x = this._pos.x;
         this._y = this._pos.y;
+    }
+    updateSpeed() {
+        this._vel = vel_bola;
     }
 
     mover() {
@@ -227,7 +230,7 @@ window.onload = start();
 
 function start() {
     // Eventos
-    formBoton.addEventListener("click", function(){updateData(); resetPos();});
+    formBoton.addEventListener("click", function(){updateData();});
 
     // Jugadores
     nombreJ1 = formJ1.value;
@@ -256,11 +259,23 @@ function start() {
     pala2 = new Pala(pos_ini_pala2.x, largo_pala, rutaPala2, 2);
 
     // Bola
-    console.log("Marcador");
     dir_bola = new Vector(0, 0);
-    vel_bola = 1;
+    vel_bola = 2;
+    /* console.log("value: "+ formVel.value);
+    switch(formVel.value){
+        case 3:
+            vel_bola = 100;
+        break;
+        case 2:
+        default:
+        break;
+        case 1:
+            vel_bola = 0.7;
+        break;
+    } */
+    console.log("Vel en start: " + vel_bola);
     console.log("1: " + dir_bola.x);
-    bola = new Bola(width/2, height/2, vel_bola);
+    bola = new Bola(width/2, height/2);
     resetPos();
     deltaX = 10;
     deltaY = 10;
@@ -325,6 +340,7 @@ function update() {
     if (gol == false) {
         evaluarBordes();
         bola.mover();
+        bola.updateSpeed();
         draw();
     }
     else {
@@ -352,19 +368,16 @@ function resetPos() {
 
             dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
             //dir_bola.normalize();
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 1:
 
             dir_bola.copy(new Vector(Math.cos(toRad(125)), Math.sin(toRad(125))));
             //dir_bola.normalize();
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
             break;
         case 2:
 
             dir_bola.copy(new Vector(Math.cos(toRad(235)), Math.sin(toRad(235))));
             //dir_bola.normalize();
-            console.log("dir_bola: " + dir_bola.x + ", " + dir_bola.y);
 
             break;
         case 3:
@@ -420,21 +433,21 @@ function evaluarBordes() {
     // Rebote con palas
     if(bola.x <=width/2){
         if(bola.x - radio_bola <= pala1.x + pala1.w){
-            console.log("Coincide la x");
+            //console.log("Coincide la x");
             if(bola.y >= pala1.y - 5 && bola.y <= pala1.y + pala1.tam + 5){
-                console.log("Colision pala1");
+                //console.log("Colision pala1");
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
-                console.log("Rebote");
+                //console.log("Rebote");
             }
         }
     }
     else{
         if(bola.x + radio_bola >= pala2.x){
-            console.log("Coincide la x");
+            //console.log("Coincide la x");
             if(bola.y >= pala2.y - 5 && bola.y <= pala2.y + pala2.tam + 5){
-                console.log("Colision pala2");
+                //console.log("Colision pala2");
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
-                console.log("Rebote");
+                //console.log("Rebote");
             }
         }
     }
@@ -453,7 +466,23 @@ function updateData() {
     pala2._tam = formTam.value || pala2._tam;
 
     // Velocidad bola
-    vel_bola = formVel.value || vel_bola;
+    //vel_bola = formVel.value || vel_bola;
+    console.log("value: "+ formVel.value);
+    switch(formVel.value){
+        case 3:
+            vel_bola = 100;
+        break;
+        case 2:
+        default:
+            vel_bola = 2;
+        break;
+        case 1:
+            vel_bola = 0.7;
+        break;
+    }
+    console.log("Vel en updateData: " + vel_bola);
+    bola.updateSpeed();
+    console.log("Vel en updateData: " + vel_bola);
 }
 var refresco1;
 var refresco2;
