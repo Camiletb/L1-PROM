@@ -37,7 +37,12 @@
                     <label for="inputTamPala" class="form-label">Tamaño pala</label>
                 </div>
                 <div class="form-floating text-secondary col-md-6 mt-2">
-                    <input type="number" class="form-control bg-dark text-light" id="inputVelBola" placeholder="Velocidad bola" value="1">
+                    <select class="form-select bg-dark text-light" aria-label="Default select example" id="inputVelBola">
+                        <option selected value="1">Lenta</option>
+                        <option value="2">Normal</option>
+                        <option value="3">Rápida</option>
+                      </select>
+                    <!--<input type="number" class="form-control bg-dark text-light" id="inputVelBola" placeholder="Velocidad bola" value="1">-->
                     <label for="inputVelBola" class="form-label">Vel. bola</label>
                 </div>
                     <h6 class=" text-light mt-4 mb-0">Sonido</h6>
