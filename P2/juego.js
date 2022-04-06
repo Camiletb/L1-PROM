@@ -219,6 +219,17 @@ var dir_bola;
 var salida_bola;
 var vel_bola;
 
+// Audio
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioCtx;
+let pongElement;
+let palaElement;
+let pongTrack;
+let palaTrack;
+let gainNode;
+let pannerOptions;
+let panner;
+
 // Auxiliares
 var cont = 0;
 var cont1 = 0;
@@ -231,6 +242,18 @@ window.onload = start();
 function start() {
     // Eventos
     formBoton.addEventListener("click", function(){updateData();});
+
+    // Audio
+    audioCtx = new AudioContext();
+    gainNode = audioCtx.createGain();
+    pannerOptions = {pan: 0};
+    panner = new StereoPannerNode(audioCtx, pannerOptions);
+    pongElement = document.getElementById("soundPong");
+    palaElement = document.getElementById("soundPala");
+    pongTrack = audioCtx.createMediaElementSource(pongElement);
+    palaTrack = audioCtx.createMediaElementSource(palaElement);
+    pongTrack.connect(gainNode).connect(panner).connect(audioCtx.destination);
+    palaTrack.connect(gainNode).connect(panner).connect(audioCtx.destination);
 
     // Jugadores
     nombreJ1 = formJ1.value;
@@ -363,29 +386,23 @@ function resetPos() {
     //dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random() * 10) % 4);
 
-    switch(salida_bola) {
+    switch (salida_bola) {
         case 0:
-
             dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
             //dir_bola.normalize();
             break;
         case 1:
-
             dir_bola.copy(new Vector(Math.cos(toRad(125)), Math.sin(toRad(125))));
             //dir_bola.normalize();
             break;
         case 2:
-
             dir_bola.copy(new Vector(Math.cos(toRad(235)), Math.sin(toRad(235))));
             //dir_bola.normalize();
-
             break;
         case 3:
         default:
-
             dir_bola.copy(new Vector(Math.cos(toRad(305)), Math.sin(toRad(305))));
             //dir_bola.normalize();
-            
             break;
     }
     console.log("vel: " + bola.speed);
@@ -424,28 +441,36 @@ function evaluarBordes() {
 
     // Rebote con paredes
     if (bola.y <= 0 + radio_bola) {
+        panner.pan.value = 0;
+        pongElement.play();
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     } 
     else if (bola.y > height - radio_bola) {
+        panner.pan.value = 0;
+        pongElement.play();
         dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     }
 
     // Rebote con palas
-    if(bola.x <=width/2){
-        if(bola.x - radio_bola <= pala1.x + pala1.w){
+    if (bola.x <=width/2) {
+        if (bola.x - radio_bola <= pala1.x + pala1.w) {
             //console.log("Coincide la x");
-            if(bola.y >= pala1.y - 5 && bola.y <= pala1.y + pala1.tam + 5){
+            if (bola.y >= pala1.y - 5 && bola.y <= pala1.y + pala1.tam + 5) {
                 //console.log("Colision pala1");
+                panner.pan.value = -1;
+                pongElement.play();
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
         }
     }
-    else{
-        if(bola.x + radio_bola >= pala2.x){
+    else {
+        if (bola.x + radio_bola >= pala2.x) {
             //console.log("Coincide la x");
-            if(bola.y >= pala2.y - 5 && bola.y <= pala2.y + pala2.tam + 5){
+            if (bola.y >= pala2.y - 5 && bola.y <= pala2.y + pala2.tam + 5) {
                 //console.log("Colision pala2");
+                panner.pan.value = 1;
+                pongElement.play();
                 dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
@@ -484,8 +509,10 @@ function updateData() {
     bola.updateSpeed();
     console.log("Vel en updateData: " + vel_bola);
 }
+
 var refresco1;
 var refresco2;
+
 function keyHandlerDown(e){
     let code = e.keyCode;
     switch(code){
