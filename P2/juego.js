@@ -245,6 +245,7 @@ var cont = 0;
 var cont1 = 0;
 var cont2 = 0;
 var gol = false;
+var jugadores = true;
 
 // Eventos
 formBoton.addEventListener("click", function(){updateData();});
@@ -298,18 +299,6 @@ function start() {
     // Bola
     dir_bola = new Vector(0, 0);
     vel_bola = 2;
-    /* console.log("value: "+ formVel.value);
-    switch(formVel.value){
-        case 3:
-            vel_bola = 100;
-        break;
-        case 2:
-        default:
-        break;
-        case 1:
-            vel_bola = 0.7;
-        break;
-    } */
     console.log("Vel en start: " + vel_bola);
     console.log("1: " + dir_bola.x);
     bola = new Bola(width/2, height/2);
@@ -348,27 +337,58 @@ function draw() {
     ctx.stroke();
 
     // Marcador
-    ctx.beginPath();
-    ctx.font = "30px Arial";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText("Best of 5!", width/2, 65); // goles J1
-    ctx.stroke();
-    ctx.font = "bold 50px Arial";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText(nombreJ1, width/4, height/2 - 80);
-    ctx.font = "bold 100px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText(cont2, width/4, height/2 + 35); // goles J1
-    ctx.font = "bold 50px Arial";
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.fillText(nombreJ2, 3 * width/4, height/2 - 80);
-    ctx.font = "bold 100px Arial";
-    ctx.fillStyle = "white";
-    ctx.fillText(cont1, 3 * width/4, height/2 + 35); // goles J2
-    ctx.stroke();
+    if(true == jugadores){
+        ctx.beginPath();
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        if(cont <=2-1)
+            ctx.fillText(3 - cont +" balls!", width/2, 65); // goles J1
+        else {
+            ctx.fillText("Last ball!", width/2, 65); // goles J1
+        }
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.font = "bold 50px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(nombreJ1, width/4, height/2 - 80);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.font = "bold 100px Arial";
+        ctx.fillStyle = "white";
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fillText(cont2, width/4, height/2 + 35); // goles J1
+        ctx.font = "bold 50px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(nombreJ2, 3 * width/4, height/2 - 80);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.font = "bold 100px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(cont1, 3 * width/4, height/2 + 35); // goles J2
+        ctx.stroke();
+    }else {
+        let gana;
+
+        if(cont1 > cont2) {
+            //ganador J2
+            gana = nombreJ2;
+        }else {
+            //ganador J1
+            gana = nombreJ1;
+        }
+
+        ctx.beginPath();
+        ctx.font = "80px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(gana + " wins!", width/2, height/2); // goles J1
+        ctx.stroke();
+        setTimeout(resetAll, 10000);
+    }
 
     // Bola
     bola.dibujar();
@@ -390,9 +410,16 @@ function update() {
     else {
         setTimeout(resetGol, 3000);
     }
+    //caso para cuando acaba el partido (booleano)
+    
     setInterval(draw, 3000);
-
-    cont++;
+    
+}
+function ganador(){
+    if(3 == cont) {
+        jugadores = false;
+        
+    }
 }
 
 function resetGol() {
@@ -450,6 +477,8 @@ function evaluarBordes() {
         resetPos();
         pala1.resetPos();
         pala2.resetPos();
+        cont++;
+        ganador();
     }
 
     // Gol derecha
@@ -462,6 +491,8 @@ function evaluarBordes() {
         resetPos();
         pala1.resetPos();
         pala2.resetPos();
+        cont++;
+        ganador();
     }
 
     if (gol) {
@@ -524,14 +555,14 @@ function updateData() {
     console.log("value: "+ au);
     switch(au){
         case 3:
-            vel_bola = 10;
+            vel_bola = 4;
         break;
         case 2:
         default:
-            vel_bola = 2;
+            vel_bola = 1;
         break;
         case 1:
-            vel_bola = 0.7;
+            vel_bola = 0.5;
         break;
     }
     console.log("Vel en updateData: " + vel_bola);
@@ -549,14 +580,14 @@ function keyHandlerDown(e){
         case 87: //Arriba
             pala1.mover(-1);
             break;
-            case 83: //Abajo
+        case 83: //Abajo
             pala1.mover(1);
             break;
             //J2
-            case 38: //Arriba
+        case 38: //Arriba
             pala2.mover(-1);
             break;
-            case 40: //Abajo
+        case 40: //Abajo
             pala2.mover(1);
             break;
     }
@@ -569,8 +600,10 @@ function updateVol() {
 function resetAll () {
     resetPos();
     gol = false;
+    cont = 0;
     cont1 = 0;
     cont2 = 0;
     pala1.resetPos();
     pala2.resetPos();
+    jugadores = true;
 }
