@@ -162,14 +162,16 @@ class Pala {
     }
 
     mover(deltaY) {
-        if(this._y >=5 && this._y <= height - this._tam - 5){
-
+        if (this._y >=5 && this._y <= height - this._tam - 5) {
             this._y += deltaY * this._speedpala;
-        }else if(this.y < 5){
+        }
+        else if (this.y < 5) {
             this._y += 5;
-        }else{
+            palaElement.play();
+        }
+        else {
             this._y -=5;
-            
+            palaElement.play();
         }
         this.dibujar();
     }
@@ -224,8 +226,10 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx;
 let pongElement;
 let palaElement;
+let golElement;
 let pongTrack;
 let palaTrack;
+let golTrack;
 let gainNode;
 let pannerOptions;
 let panner;
@@ -242,6 +246,7 @@ window.onload = start();
 function start() {
     // Eventos
     formBoton.addEventListener("click", function(){updateData();});
+    formVol.addEventListener("change", updateVol);
 
     // Audio
     audioCtx = new AudioContext();
@@ -250,10 +255,13 @@ function start() {
     panner = new StereoPannerNode(audioCtx, pannerOptions);
     pongElement = document.getElementById("soundPong");
     palaElement = document.getElementById("soundPala");
+    golElement = document.getElementById("soundGol");
     pongTrack = audioCtx.createMediaElementSource(pongElement);
     palaTrack = audioCtx.createMediaElementSource(palaElement);
+    golTrack = audioCtx.createMediaElementSource(golElement);
     pongTrack.connect(gainNode).connect(panner).connect(audioCtx.destination);
-    palaTrack.connect(gainNode).connect(panner).connect(audioCtx.destination);
+    palaTrack.connect(gainNode).connect(audioCtx.destination);
+    golTrack.connect(gainNode).connect(audioCtx.destination);
 
     // Jugadores
     nombreJ1 = formJ1.value;
@@ -439,6 +447,10 @@ function evaluarBordes() {
         resetPos();
     }
 
+    if (gol) {
+        golElement.play();
+    }
+
     // Rebote con paredes
     if (bola.y <= 0 + radio_bola) {
         panner.pan.value = 0;
@@ -531,4 +543,8 @@ function keyHandlerDown(e){
             pala2.mover(1);
             break;
     }
+}
+
+function updateVol() {
+    gainNode.gain.value = parseInt(inputVol.value);
 }
