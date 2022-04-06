@@ -143,6 +143,11 @@ class Pala {
         this._tam = tam;
     }
 
+    resetPos() {
+        this._x = this._posini.x;
+        this._y = this._posini.y;
+    }
+
     // Funciones
     dibujar() {
         let imagen = new Image();
@@ -179,6 +184,7 @@ class Pala {
 
 // Formulario
 var formBoton = document.getElementById("submit");
+var formReset = document.getElementById("reset");
 var formJ1 = document.getElementById("inputJ1");
 var formJ2 = document.getElementById("inputJ2");
 var formTam = document.getElementById("inputTamPala");
@@ -240,14 +246,14 @@ var cont1 = 0;
 var cont2 = 0;
 var gol = false;
 
+// Eventos
+formBoton.addEventListener("click", function(){updateData();});
+formReset.addEventListener("click", resetAll);
+formVol.addEventListener("change", updateVol);
 window.addEventListener("keydown", keyHandlerDown);
 window.onload = start();
 
 function start() {
-    // Eventos
-    formBoton.addEventListener("click", function(){updateData();});
-    formVol.addEventListener("change", updateVol);
-
     // Audio
     audioCtx = new AudioContext();
     gainNode = audioCtx.createGain();
@@ -442,6 +448,8 @@ function evaluarBordes() {
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
         resetPos();
+        pala1.resetPos();
+        pala2.resetPos();
     }
 
     // Gol derecha
@@ -452,6 +460,8 @@ function evaluarBordes() {
         setTimeout(draw, 3000);
         setTimeout(moverBola, 3000);
         resetPos();
+        pala1.resetPos();
+        pala2.resetPos();
     }
 
     if (gol) {
@@ -554,4 +564,13 @@ function keyHandlerDown(e){
 
 function updateVol() {
     gainNode.gain.value = parseInt(inputVol.value);
+}
+
+function resetAll () {
+    resetPos();
+    gol = false;
+    cont1 = 0;
+    cont2 = 0;
+    pala1.resetPos();
+    pala2.resetPos();
 }
