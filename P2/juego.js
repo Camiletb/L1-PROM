@@ -348,13 +348,20 @@ function draw() {
     ctx.textAlign = "center";
     ctx.fillText("Best of 5!", width/2, 65); // goles J1
     ctx.stroke();
-    ctx.font = "50px Arial";
+    ctx.font = "bold 50px Arial";
     ctx.fillStyle = "white";
-    ctx.textAlign = "left";
-    ctx.fillText(cont1, 35, 65); // goles J1
-    ctx.fillStyle = "black";
-    ctx.textAlign = "right";
-    ctx.fillText(cont2, width - 35, 65); // goles J2
+    ctx.textAlign = "center";
+    ctx.fillText(nombreJ1, width/4, height/2 - 80);
+    ctx.font = "bold 100px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(cont2, width/4, height/2 + 35); // goles J1
+    ctx.font = "bold 50px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(nombreJ2, 3 * width/4, height/2 - 80);
+    ctx.font = "bold 100px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(cont1, 3 * width/4, height/2 + 35); // goles J2
     ctx.stroke();
 
     // Bola
