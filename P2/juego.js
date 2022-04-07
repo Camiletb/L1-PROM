@@ -454,9 +454,11 @@ function resetPos() {
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random() * 10) % 4);
     if(3 != cont){
-
-        switch (salida_bola) {
+        //trigger 0
+        corregirDireccion(0);
+        /* switch (salida_bola) {
             case 0:
+                //trigger
                 dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
                 //dir_bola.normalize();
                 break;
@@ -473,10 +475,10 @@ function resetPos() {
                 dir_bola.copy(new Vector(Math.cos(toRad(305)), Math.sin(toRad(305))));
                 //dir_bola.normalize();
                 break;
-        }
+        } */
     }
     console.log("vel: " + bola.speed);
-    dir_bola.mult(bola.speed);
+    //dir_bola.mult(bola.speed);
     console.log("3: " + dir_bola.x);
 }
 
@@ -491,7 +493,7 @@ function toRad(grados) {
 function evaluarBordes() {
     // Gol izquierda
     if (bola.x <= 0) {
-        dir_bola = new Vector(0, 0);
+        corregirDireccion(3);
         gol = true;
         cont1++;
         //setTimeout(draw, 3000);
@@ -505,7 +507,8 @@ function evaluarBordes() {
 
     // Gol derecha
     if (bola.x >= width) {
-        dir_bola = new Vector(0, 0);
+        corregirDireccion(3);
+
         gol = true;
         cont2++;
         //setTimeout(draw, 3000);
@@ -525,12 +528,16 @@ function evaluarBordes() {
     if (bola.y <= radio_bola) {
         panner.pan.value = 0;
         pongElement.play();
-        dir_bola = new Vector(dir_bola.x, -dir_bola.y);
+        corregirDireccion(1);
+
+        //dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     } 
     else if (bola.y > height - radio_bola) {
         panner.pan.value = 0;
         pongElement.play();
-        dir_bola = new Vector(dir_bola.x, -dir_bola.y);
+        corregirDireccion(1);
+
+        //dir_bola = new Vector(dir_bola.x, -dir_bola.y);
     }
 
     // Rebote con palas
@@ -542,7 +549,9 @@ function evaluarBordes() {
                 panner.pan.value = -1;
                 pongElement.play();
                 panner.pan.value = 0;
-                dir_bola = new Vector(-dir_bola.x, dir_bola.y);
+                corregirDireccion(2);
+
+                //dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
         }
@@ -554,7 +563,9 @@ function evaluarBordes() {
                 panner.pan.value = 1;
                 pongElement.play();
                 panner.pan.value = 0;
-                dir_bola = new Vector(-dir_bola.x, dir_bola.y);
+                corregirDireccion(2);
+
+                //dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
         }
@@ -562,6 +573,39 @@ function evaluarBordes() {
 
     // Si la bola toca la pala, entonces rebota. Si está dentro de su y, y coincide la x
     //if(pos_bola.y == pala1.y)
+}
+
+function corregirDireccion(trigger){
+    /* Posibles valores del trigger
+    3 = gol
+    2 = pala
+    1 = pared
+    0 = salida
+    */
+    switch(trigger){
+        case 3:
+            dir_bola = new Vector(0, 0);
+            break;
+        case 2:
+            dir_bola = new Vector(-dir_bola.x, dir_bola.y);
+            break;
+        case 1:
+            dir_bola = new Vector(dir_bola.x, -dir_bola.y);
+            break;
+        case 0:
+            let a;
+            let b;
+            let valoresPosibles = [-1, 1];
+            let random;
+            random = valoresPosibles[Math.floor(Math.random() * valoresPosibles.length)];
+            a = Math.cos(toRad(35) * random);
+            random = valoresPosibles[Math.floor(Math.random() * valoresPosibles.length)];
+            b = Math.sin(toRad(35) * random);
+            dir_bola.copy(new Vector(a, b));
+
+            dir_bola.mult(bola.speed);
+            break;
+    }
 }
 
 function updateData() {
