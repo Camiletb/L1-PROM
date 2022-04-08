@@ -248,11 +248,13 @@ let pannerOptions;
 let panner;
 
 // Auxiliares
-var cont = 0;
 var cont1 = 0;
 var cont2 = 0;
+var cont = cont1 + cont2;
+var maxgoles = 9;
 var gol = false;
 var jugadores = true;
+var fin = false;
 
 // Eventos
 formBoton.addEventListener("click", function(){updateData();});
@@ -351,8 +353,8 @@ function draw() {
         ctx.font = "30px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        if (cont <= 2-1)
-            ctx.fillText(3 - cont +" balls!", width/2, 65); // goles J1
+        if (cont <= maxgoles-2)
+            ctx.fillText(maxgoles - cont +" balls!", width/2, 65); // goles J1
         else {
             ctx.fillText("Last ball!", width/2, 65); // goles J1
         }
@@ -411,71 +413,28 @@ function draw() {
 }
 
 function update() {
-    if (gol == false) {
-        evaluarBordes();
-        bola.mover();
-        draw();
-    }
-    else {
-        if(cont != 3)
-            setTimeout(resetGol, 3000);
-        
-    }
-    //caso para cuando acaba el partido (booleano)
-    if (3 == cont) {
-        //setTimeout(resetGol, 10000);
-        console.log("ho");
-        setTimeout(resetAll, 10000);
-        console.log("hola");
-        setInterval(draw, 10000);
-        console.log("hola jefe");
-    } 
-    else {
-        setInterval(draw, 3000);
-    }
+    if(!gol)
+        evaluarBordes(); 
     
+    draw();
+   
 }
-function ganador(){
-    if(3 == cont) {
-        jugadores = false;
-        
-    }
-}
-
 function resetGol() {
+    resetPos();
     gol = false;
 }
 
 function resetPos() {
-    pos_pala1 = pos_ini_pala1;
-    pos_pala2 = pos_ini_pala2;
+    
+    pala1.resetPos();
+    pala2.resetPos();
     console.log("2: " + dir_bola.x);
     bola.setPos(new Vector(centro_campo.x, centro_campo.y));
     dir_bola = new Vector(0, 0);
     salida_bola = (Math.floor(Math.random() * 10) % 4);
-    if(3 != cont){
+    if(maxgoles != cont){
         //trigger 0
-        corregirDireccion(0);
-        /* switch (salida_bola) {
-            case 0:
-                //trigger
-                dir_bola.copy(new Vector(Math.cos(toRad(55)), Math.sin(toRad(55))));
-                //dir_bola.normalize();
-                break;
-            case 1:
-                dir_bola.copy(new Vector(Math.cos(toRad(125)), Math.sin(toRad(125))));
-                //dir_bola.normalize();
-                break;
-            case 2:
-                dir_bola.copy(new Vector(Math.cos(toRad(235)), Math.sin(toRad(235))));
-                //dir_bola.normalize();
-            break;
-            case 3:
-            default:
-                dir_bola.copy(new Vector(Math.cos(toRad(305)), Math.sin(toRad(305))));
-                //dir_bola.normalize();
-                break;
-        } */
+        setTimeout(corregirDireccion(0), 3000);
     }
     console.log("vel: " + bola.speed);
     //dir_bola.mult(bola.speed);
@@ -491,38 +450,35 @@ function toRad(grados) {
 }
 
 function evaluarBordes() {
-    // Gol izquierda
-    if (bola.x <= 0) {
+    if(bola.x <=0 || bola.x >= width){
+        bola.setPos(new Vector(width/2, height/2));
         corregirDireccion(3);
         gol = true;
-        cont1++;
-        //setTimeout(draw, 3000);
+        
+        //Subir gol
+        if(bola.x <= 0)
+            cont1++;
+        else
+            cont2++;
+        
+        //resetPos();
+        setTimeout(resetGol, 3000);
         setTimeout(moverBola, 3000);
-        resetPos();
-        pala1.resetPos();
-        pala2.resetPos();
         cont++;
-        ganador();
-    }
-
-    // Gol derecha
-    if (bola.x >= width) {
-        corregirDireccion(3);
-
-        gol = true;
-        cont2++;
-        //setTimeout(draw, 3000);
-        setTimeout(moverBola, 3000);
-        resetPos();
-        pala1.resetPos();
-        pala2.resetPos();
-        cont++;
-        ganador();
-    }
-
-    if (gol) {
         golElement.play();
+
+        //caso para cuando acaba el partido (booleano)
+        if(maxgoles === cont){
+            endElement.play();
+            fin = true;
+            jugadores = false;
+            //resetAll();
+            setTimeout(resetAll, 5000);
+        }
+    } else {
+        bola.mover();
     }
+
 
     // Rebote con paredes
     if (bola.y <= radio_bola) {
@@ -550,8 +506,6 @@ function evaluarBordes() {
                 pongElement.play();
                 panner.pan.value = 0;
                 corregirDireccion(2);
-
-                //dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
         }
@@ -564,8 +518,6 @@ function evaluarBordes() {
                 pongElement.play();
                 panner.pan.value = 0;
                 corregirDireccion(2);
-
-                //dir_bola = new Vector(-dir_bola.x, dir_bola.y);
                 //console.log("Rebote");
             }
         }
@@ -614,8 +566,11 @@ function updateData() {
     nombreJ2 = formJ2.value || nombreJ2;
 
     // Tamaño pala
-    pala1._tam = parseInt(formTam.value || pala1._tam);
-    pala2._tam = parseInt(formTam.value || pala2._tam);
+    largo_pala = parseInt(formTam.value || largo_pala);
+    pala1 = new Pala(pos_ini_pala1.x, largo_pala, rutaPala1, 1);
+    pala2 = new Pala(pos_ini_pala2.x, largo_pala, rutaPala2, 2);
+    //pala1._tam = parseInt(formTam.value || pala1._tam);
+    //pala2._tam = parseInt(formTam.value || pala2._tam);
 
     // Velocidad bola
     let au = parseInt(formVel.value);
@@ -665,13 +620,19 @@ function updateVol() {
 }
 
 function resetAll () {
-    resetGol();
-    resetPos();
-    gol = false;
-    cont = 0;
-    cont1 = 0;
-    cont2 = 0;
-    pala1.resetPos();
-    pala2.resetPos();
+    bola.setPos(new Vector(centro_campo.x, centro_campo.y));
+    if(!fin){
+
+        resetGol();
+        gol = false;
+        
+        
+    }else{
+        cont = 0;
+        cont1 = 0;
+        cont2 = 0;
+        fin = false;
+    }
     jugadores = true;
+    //start();
 }
