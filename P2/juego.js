@@ -242,7 +242,7 @@ let endElement;
 let pongTrack;
 let palaTrack;
 let golTrack;
-let golEndTrack;
+let endTrack;
 let gainNode;
 let pannerOptions;
 let panner;
@@ -267,6 +267,7 @@ function start() {
     // Audio
     audioCtx = new AudioContext();
     gainNode = audioCtx.createGain();
+    gainNode.gain.value = parseFloat(formVol.value);
     pannerOptions = {pan: 0};
     panner = new StereoPannerNode(audioCtx, pannerOptions);
     pongElement = document.getElementById("soundPong");
@@ -280,6 +281,7 @@ function start() {
     pongTrack.connect(gainNode).connect(panner).connect(audioCtx.destination);
     palaTrack.connect(gainNode).connect(audioCtx.destination);
     golTrack.connect(gainNode).connect(audioCtx.destination);
+    endTrack.connect(gainNode).connect(audioCtx.destination);
 
     // Jugadores
     nombreJ1 = formJ1.value;
@@ -450,22 +452,27 @@ function toRad(grados) {
 }
 
 function evaluarBordes() {
-    if(bola.x <=0 || bola.x >= width){
-        bola.setPos(new Vector(width/2, height/2));
-        corregirDireccion(3);
+    if (bola.x <= 0 || bola.x >= width) {
         gol = true;
         
         //Subir gol
-        if(bola.x <= 0)
+        if (bola.x <= 0) {
             cont1++;
-        else
+            console.log("Gol J2");
+        }
+        else if (bola.x >= width) {
             cont2++;
-        
+            console.log("Gol J1");
+        }
+
         //resetPos();
         setTimeout(resetGol, 3000);
         setTimeout(moverBola, 3000);
         cont++;
         golElement.play();
+
+        bola.setPos(new Vector(width/2, height/2));
+        corregirDireccion(3);
 
         //caso para cuando acaba el partido (booleano)
         if(maxgoles === cont){
@@ -473,7 +480,7 @@ function evaluarBordes() {
             fin = true;
             jugadores = false;
             //resetAll();
-            setTimeout(resetAll, 5000);
+            setTimeout(resetAll, 10000);
         }
     } else {
         bola.mover();
@@ -616,23 +623,31 @@ function keyHandlerDown(e){
 }
 
 function updateVol() {
-    gainNode.gain.value = parseInt(inputVol.value);
+    gainNode.gain.value = parseFloat(inputVol.value);
 }
 
 function resetAll () {
     bola.setPos(new Vector(centro_campo.x, centro_campo.y));
-    if(!fin){
+    // if (!fin) {
 
-        resetGol();
-        gol = false;
+    //     resetGol();
+    //     gol = false;
         
         
-    }else{
-        cont = 0;
-        cont1 = 0;
-        cont2 = 0;
-        fin = false;
-    }
+    // } else {
+    //     cont = 0;
+    //     cont1 = 0;
+    //     cont2 = 0;
+    //     fin = false;
+    // }
+
+    resetGol();
+    gol = false;
+    cont = 0;
+    cont1 = 0;
+    cont2 = 0;
+    fin = false;
+
     jugadores = true;
     //start();
 }
