@@ -1,0 +1,47 @@
+{
+    "nodes": [
+        {"id": "Bélgica", "group": "nallies", "victims": 63},
+        {"id": "China", "group": "allies", "victims": 16600},
+        {"id": "Alemania Nazi", "group": "axis", "victims": 6990},
+        {"id": "Finlandia", "group": "axis", "victims": 85},
+        {"id": "Francia", "group": "allies", "victims": 238},
+        {"id": "Grecia", "group": "nallies", "victims": 100},
+        {"id": "Reino Unido", "group": "allies", "victims": 430},
+        {"id": "Italia", "group": "axis", "victims": 400},
+        {"id": "Japón", "group": "axis", "victims": 2420},
+        {"id": "Yugoslavia", "group": "naxis", "victims": 1600},
+        {"id": "Austria", "group": "allies", "victims": 264},
+        {"id": "Polonia", "group": "complicated", "victims": 3620},
+        {"id": "Rumanía", "group": "axis", "victims": 233},
+        {"id": "Unión Soviética", "group": "allies", "victims": 32499},
+        {"id": "Checoslovaquia", "group": "axis", "victims": 119},
+        {"id": "Hungría", "group": "axis", "victims": 200.4},
+        {"id": "EE.UU.", "group": "allies", "victims": 174},
+        {"id": "España", "group": "naxis", "victims": 10}
+    ],
+    "links": [
+        {"src": "Bélgica", "dst": "China", "type": "friend"},
+        {"src": "Bélgica", "dst": "Francia", "type": "friend"},
+        {"src": "Bélgica", "dst": "Reino Unido", "type": "friend"},
+        {"src": "Bélgica", "dst": "Austria", "type": "friend"},
+        {"src": "Bélgica", "dst": "Unión Soviética", "type": "friend"},
+        {"src": "Bélgica", "dst": "EE.UU.", "type": "friend"},
+        {"src": "Grecia", "dst": "China", "type": "friend"},
+        {"src": "Grecia", "dst": "Francia", "type": "friend"},
+        {"src": "Grecia", "dst": "Reino Unido", "type": "friend"},
+        {"src": "Grecia", "dst": "Austria", "type": "friend"},
+        {"src": "Grecia", "dst": "Unión Soviética", "type": "friend"},
+        {"src": "Grecia", "dst": "EE.UU.", "type": "friend"},
+        {"src": "Yugoslavia", "dst": "Alemania Nazi", "type": "friend"},
+        {"src": "Yugoslavia", "dst": "Italia", "type": "friend"},
+        {"src": "Yugoslavia", "dst": "Japón", "type": "friend"},
+        {"src": "Yugoslavia", "dst": "Checoslovaquia", "type": "friend"},
+        {"src": "Yugoslavia", "dst": "Hungría", "type": "friend"},
+        {"src": "España", "dst": "Alemania Nazi", "type": "friend"},
+        {"src": "España", "dst": "Italia", "type": "friend"},
+        {"src": "España", "dst": "Japón", "type": "friend"},
+        {"src": "España", "dst": "Checoslovaquia", "type": "friend"},
+        {"src": "España", "dst": "Hungría", "type": "friend"}
+    ]
+}
+      
