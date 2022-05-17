@@ -13,33 +13,33 @@
   stroke-width: 1.5px;
 }
 body{
-	background-color: #000
+	background-color: #000;
 }
 
 </style>
 </head>
 <body>
 
-<!-- <script source="https://d3js.org/d3.v4.min.js"></script> -->
-	<script type="text/javascript" source="js/d3.min.js"></script>
+<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+	<script type="text/javascript" src="js/d3.min.js"></script>
 <script>
 
-	//Width and height
-	var width = 1920;
-	var height = 1080;
-				
-	//Create SVG element
-	var svg = d3.select("body")
-				.append("svg")
-				.attr("width", width)
-				.attr("height", height);
+//Width and height
+var width = 1000;
+var height = 1000;
+			
+//Create SVG element
+var svg = d3.select("body")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height);
 				
 	var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 	//Create a new forceSimulation and add forces
 	//https://github.com/d3/d3-force/blob/master/README.md#forces
 	var simulation = d3.forceSimulation()
-		.force("link", d3.forceLink()) //Create link forces
+		.force("link", d3.forceLink().distance(500)) //Create link forces
 		.force("charge", d3.forceManyBody()) //Apply charge to nodes https://github.com/d3/d3-force/blob/master/README.md#many-body
 		.force("center", d3.forceCenter(width / 2, height / 2)); //Creates a new centering force 
 		
