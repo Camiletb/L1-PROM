@@ -1,0 +1,26 @@
+{
+    "nodes": [
+        {"id": "Bélgica", "group": "nallies", "victims": 63},
+        {"id": "China", "group": "allies", "victims": 16600},
+        {"id": "Alemania Nazi", "group": "axis", "victims": 6990},
+        {"id": "Finlandia", "group": "axis", "victims": 85},
+        {"id": "Francia", "group": "allies", "victims": 238},
+        {"id": "Grecia", "group": "nallies", "victims": 100},
+        {"id": "Reino Unido", "group": "allies", "victims": 430},
+        {"id": "Italia", "group": "axis", "victims": 400},
+        {"id": "Japón", "group": "axis", "victims": 2420},
+        {"id": "Yugoslavia", "group": "naxis", "victims": 1600},
+        {"id": "Austria", "group": "allies", "victims": 264},
+        {"id": "Polonia", "group": "complicated", "victims": 3620},
+        {"id": "Rumanía", "group": "axis", "victims": 233},
+        {"id": "Unión Soviética", "group": "allies", "victims": 32499},
+        {"id": "Checoslovaquia", "group": "axis", "victims": 119},
+        {"id": "Hungría", "group": "axis", "victims": 200.4},
+        {"id": "EE.UU.", "group": "allies", "victims": 174},
+        {"id": "España", "group": "naxis", "victims": 10}
+    ],
+    "links": [
+        
+    ]
+}
+      
