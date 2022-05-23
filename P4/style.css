@@ -3,29 +3,14 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    //background-color: aliceblue;
+    background-color: rgb(20, 40, 60);
+}
+.links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
 }
 
-#nivel{
-    padding: 10px;
-    background-color: brown;
-    position: absolute;
-    color: white;
-    font-size: 3em;
-    font-weight: bold;
-    top: 192px;
-    right: 30px;
-
-}
-
-#reglas{
-    padding: 10px;
-    position: absolute;
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    bottom: 40px;
-    left: 30px;
-    text-align: center;
-
+.nodes circle {
+stroke: #fff;
+stroke-width: 1.5px;
 }
