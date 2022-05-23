@@ -1,7 +1,9 @@
 /* Para borrar los margenes del navegador */
 body{
     margin: 0;
+    padding: 0;
     overflow: hidden;
+    //background-color: aliceblue;
 }
 
 #nivel{

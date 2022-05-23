@@ -22,11 +22,13 @@ body{
 
 <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
 	<script type="text/javascript" src="js/d3.min.js"></script>
+	<link href="style.css" rel="stylesheet">
+
 <script>
 
 //Width and height
-var width = 1000;
-var height = 1000;
+var width = window.innerWidth;
+var height = window.innerHeight;
 			
 //Create SVG element
 var svg = d3.select("body")
@@ -55,6 +57,7 @@ var svg = d3.select("body")
 		.attr("stroke-width", "1")
 		.attr("stroke", "#999")
 		.attr("class", "links")
+		//switch
 		.style("stroke-dasharray", "10, 10")
 		.selectAll("line")
 		.data(graph.links) //Load "links" data from json structure to represent links
