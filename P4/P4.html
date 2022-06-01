@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- Normalización y hojas de estilo -->
+<link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<style>
+
+
+
+</style>
+</head>
+<body>
+	<div id="titulo" class="jumbotron text-center p-5 bg-light text-dark">
+		<h1>P4: Librería d3.js</h1>
+		<h2>Árbol genealógico de la mitología griega</h2>
+	</div>
+<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+	<script type="text/javascript" src="js/d3.min.js"></script>
+
+<script>
+
+//Width and height
+var width = window.innerWidth;
+var height = window.innerHeight;
+			
+
+//Create SVG element
+var svg = d3.select("body")
+			.append("svg")
+			//.attr("padding", "1.5 em")
+			.attr("width", width)
+			.attr("height", height);
+			
+			var color = d3.scaleOrdinal(d3.schemeCategory10);
+			
+			//Create a new forceSimulation and add forces
+			//https://github.com/d3/d3-force/blob/master/README.md#forces
+			var simulation = d3.forceSimulation()
+		.force("link", d3.forceLink().distance(3000)) //Create link forces
+		.force("charge", d3.forceManyBody()) //Apply charge to nodes https://github.com/d3/d3-force/blob/master/README.md#many-body
+		.force("center", d3.forceCenter(width / 2, height / 2)) //Creates a new centering force 
+		// .force("many", d3.forceManyBody().distanceMin(20000).distanceMax(300000));
+		
+		
+		//Load json data with nodes and links
+		//d3.json("nodes.json", function(error, graph) {
+			//  if (error) throw error;
+			d3.json("data.json").then(function(graph) { //Cargamos los datos jerárquicos contenidos en fichero json
+
+				
+				//Add an svg line to visually represent links between nodes
+				var link = svg.append("g")
+                    .attr("class", "links")
+                    .selectAll("line")
+                    .data(graph.links) //Load "links" data from json structure to represent links
+                    .enter().append("line")
+                    .attr("stroke-width", function (d) {
+                        return d.value;
+                    })
+                    .attr("stroke-dasharray", function (d) {
+                        var dis = "0";
+                        if (d.value === 3)
+                            dis = "20,5";
+                        return dis;
+                    });
+
+
+            //Add and svg circle to visually represent nodes
+            var node = svg.append("g")
+                    .attr("class", "nodes")
+                    .selectAll("circle")
+                    .data(graph.nodes)
+                    .enter().append("circle")
+                    .attr("r", function (d) {
+                        return 5 + d.edad * .5;
+                    })
+                    .attr("fill", function (d, i) {
+                        var colorNode;
+                        if (d.status === "hermano")
+                            colorNode = color(1);
+                        else if (d.status === "padres")
+                            colorNode = color(2);
+                        else if (d.status === "otro")
+                            colorNode = color(3);
+                        else if (d.status === "abuelo")
+                            colorNode = color(4);
+
+                        return colorNode;
+                    }
+                    );
+            var text = svg.append("g")
+                    .attr("class", "nodes")
+                    .selectAll("text")
+                    .data(graph.nodes)
+                    .enter().append("text")
+                    .attr("dx", -25)
+                    .attr("dy", 35)
+					.attr("fill", "white")
+					.style("font-size", "20px")
+                    .text(function (d) {
+                        return d.name;
+                    }
+                    );
+
+            node.call(d3.drag() //Add events to drag nodes
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+
+            node.append("title")
+                    .text(function (d) {
+                        return d.id;
+                    });
+
+			
+
+            simulation
+                    .nodes(graph.nodes)
+                    .on("tick", ticked);
+
+            simulation.force("link")
+                    .links(graph.links)
+                    .distance(function (d) {
+                        var dis = "0";
+                        if (d.value === 8)	//Distancia entre parejas
+                            dis = "40";
+                        if (d.value === 3) //Distancia entre hermanos
+                            dis = "100";
+                        if (d.value === 1) //Distancia entre padres
+                            dis = "200";
+                        return dis;
+                    });
+
+            //Every time the simulation "ticks", this will be called
+            function ticked() {
+                link
+                        .attr("x1", function (d) {
+                            return d.source.x;
+                        })
+                        .attr("y1", function (d) {
+                            return d.source.y;
+                        })
+                        .attr("x2", function (d) {
+                            return d.target.x;
+                        })
+                        .attr("y2", function (d) {
+                            return d.target.y;
+                        });
+
+                node
+                        .attr("cx", function (d) {
+                            return d.x;
+                        })
+                        .attr("cy", function (d) {
+                            return d.y;
+                        });
+
+                text
+                        .attr("transform", function (d) {
+                            return ("translate(" + d.x + "," + d.y + ")");
+                        });
+            }
+	});
+
+	function dragstarted(d) {
+		if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+		d.fx = d.x;
+		d.fy = d.y;
+	}
+
+	function dragged(d) {
+		d.fx = d3.event.x;
+		d.fy = d3.event.y;
+	}
+
+	function dragended(d) {
+		if (!d3.event.active) simulation.alphaTarget(0);
+		d.fx = null;
+		d.fy = null;
+	}
+
+</script>
+</body>
+</html>
